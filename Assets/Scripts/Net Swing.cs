@@ -12,7 +12,8 @@ using UnityEngine;
 public class NetSwing : MonoBehaviour
 {
     
-    public object Netsprite;
+    public GameObject FishNet;
+    private GameObject thisFishNet;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class NetSwing : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-            //Physics2D.Overlap
+            thisFishNet = Instantiate(FishNet, transform.position, Quaternion.identity, transform);
             }
     }
 }
