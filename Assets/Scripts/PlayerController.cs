@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float Speed;
     public float SpeedSprint;
-    public float SinkSpeed;
 
     private Vector3 inputMovement = Vector3.zero;
     private bool isSprinting;
