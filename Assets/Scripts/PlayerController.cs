@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         inputMovement.x = Input.GetAxisRaw("Horizontal");
         inputMovement.y = Input.GetAxisRaw("Vertical");
-        isSprinting = Input.GetKeyDown(KeyCode.LeftShift);
+        isSprinting = Input.GetKey(KeyCode.LeftShift);
     }
     private void FixedUpdate()
     {

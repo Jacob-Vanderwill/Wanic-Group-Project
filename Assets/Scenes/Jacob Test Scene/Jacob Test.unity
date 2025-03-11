@@ -692,8 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-  SpeedSprint: 100
-  SinkSpeed: 0
+  SpeedSprint: 15
 --- !u!1 &2052253389
 GameObject:
   m_ObjectHideFlags: 0
