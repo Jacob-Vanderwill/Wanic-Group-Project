@@ -18,6 +18,8 @@ public class ScoreManager : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         PlayerPrefs.SetInt("Coins", 0);
+        PlayerPrefs.SetFloat("OxygenTankSize", 0f);
+        PlayerPrefs.SetInt("IsDead", 0);
     }
 
     // Start is called before the first frame update

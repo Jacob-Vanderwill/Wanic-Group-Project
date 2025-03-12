@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 inputMovement = Vector3.zero;
 
+    private float oxygenTankSize;
+
     private bool isSprinting;
     private bool isDead;
 
@@ -29,8 +31,8 @@ public class PlayerController : MonoBehaviour
         myRB = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
 
+        oxygenTankSize = PlayerPrefs.GetFloat("OxygenTankSize");
         health.health = 1;
-
         isDead = false;
     }
 
@@ -41,8 +43,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            Debug.Log("Score: " + PlayerPrefs.GetInt("Coins"));
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
+            Debug.Log("Score: " + PlayerPrefs.GetInt("Coins"));
         }
 
         //
@@ -58,6 +60,13 @@ public class PlayerController : MonoBehaviour
         inputMovement.x = Input.GetAxisRaw("Horizontal");
         inputMovement.y = Input.GetAxisRaw("Vertical");
         isSprinting = Input.GetKey(KeyCode.LeftShift);
+
+        PlayerPrefs.SetInt("IsDead", isDead ? 1 : 0);
+    }
+
+    void playerPickUpFish(string tag, int value)
+    {
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + value);
     }
     private void FixedUpdate()
     {
@@ -75,10 +84,28 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // if collided with camera border then dead
-        if (collision.collider.CompareTag("MainCamera"))
+        string tag = collision.collider.tag;
+
+        // if collided with camera border then dead/if collided with fish add value
+        switch (tag)
         {
-            health.health = 0;
+            case "MainCamera":
+                {
+                    health.health = 0;
+                    break;
+                }
+            case "Enemy":
+                {
+                    health.health = 0;
+                    break;
+                }
+                /* use the following for collecting fish; change the *value* to the fish's value
+            case "text":
+                {
+                    playerPickUpFish(tag, *value*);
+                    break;
+                }
+                */
         }
     }
 }

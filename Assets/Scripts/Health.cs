@@ -12,28 +12,17 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [Tooltip("Current Health at the Start of a Level")]
-    public uint health = 3;
-    [Tooltip("The max health the object can have after healing")]
-    public uint maxHealth = 3;
+    [SerializeField]
+    public uint health = 1;
+
     public bool destroyAtZero = true;
 
     private bool isShieldActive;
 
     // Unity events
-    public UnityEvent onHeal = new UnityEvent();
     public UnityEvent onDamage = new UnityEvent();
     public UnityEvent onDeath = new UnityEvent();
 
-    public void Heal(uint amount)
-    {
-        onHeal.Invoke();
-        health += amount;
-        if (health > maxHealth)
-        {
-            health = maxHealth;
-        }
-    }
     public void Damage(uint amount)
     {
         if (!isShieldActive)
