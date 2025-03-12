@@ -60,7 +60,9 @@ public class PlayerController : MonoBehaviour
         inputMovement.x = Input.GetAxisRaw("Horizontal");
         inputMovement.y = Input.GetAxisRaw("Vertical");
         isSprinting = Input.GetKey(KeyCode.LeftShift);
-
+        // look at mouse
+        Vector2 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.rotation= Quaternion.Euler(0, 0, Mathf.Atan2(mousepos.y - transform.position.y, mousepos.x - transform.position.x) * Mathf.Rad2Deg);// update IsDead
         PlayerPrefs.SetInt("IsDead", isDead ? 1 : 0);
     }
 

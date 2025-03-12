@@ -12,11 +12,14 @@ using UnityEngine;
 public class NetSwing : MonoBehaviour
 {
     
-    public object Netsprite;
+    public GameObject Net;
+    GameObject ThisNet;
+    HingeJoint2D ThisJoint;
+    Rigidbody2D ThisRigidbody;
     // Start is called before the first frame update
     void Start()
     {
-        
+        ThisRigidbody= GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -24,9 +27,14 @@ public class NetSwing : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-
-                //Physics2D.Overlap
-
+            ThisNet = Instantiate(Net, transform.position, transform.rotation, transform);
+            ThisNet.GetComponent<Rigidbody2D>().angularVelocity = 100;
+            ThisJoint = ThisNet.GetComponent<HingeJoint2D>();
+            ThisNet.transform.position = ThisJoint.connectedAnchor;
+            ThisJoint.anchor = new Vector2(-0.5f, 0);
+            ThisJoint.connectedBody = ThisRigidbody;
+            ThisJoint.useMotor= true;
             }
+
     }
 }
