@@ -2,7 +2,7 @@
  * Jacob Vanderwill
  * 10/31/24
  * last edited: 10/31/24
- * Create a script to handle [enemy] health
+ * Create a script to handle health
  */
 
 using System.Collections;
@@ -17,6 +17,8 @@ public class Health : MonoBehaviour
     [Tooltip("The max health the object can have after healing")]
     public uint maxHealth = 3;
     public bool destroyAtZero = true;
+
+    private bool isShieldActive;
 
     // Unity events
     public UnityEvent onHeal = new UnityEvent();
@@ -34,19 +36,22 @@ public class Health : MonoBehaviour
     }
     public void Damage(uint amount)
     {
-        onDamage.Invoke();
-        if (health <= amount)
+        if (!isShieldActive)
         {
-            health = 0;
-            onDeath.Invoke();
-            if (destroyAtZero)
+            onDamage.Invoke();
+            if (health <= amount)
             {
-                transform.position = new Vector3(transform.position.x, 50, transform.position.z);
+                health = 0;
+                onDeath.Invoke();
+                if (destroyAtZero)
+                {
+                    transform.position = new Vector3(transform.position.x, 50, transform.position.z);
+                }
             }
-        }
-        else
-        {
-            health -= amount;
+            else
+            {
+                health -= amount;
+            }
         }
     }
 }
