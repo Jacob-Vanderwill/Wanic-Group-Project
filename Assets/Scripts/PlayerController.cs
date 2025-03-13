@@ -14,9 +14,14 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float Speed;
     public float SpeedSprint;
+    [Space]
+    [Header("Oxygen")]
+    public bool UseCustomOxygenLevels;
+    public float CustomMaxOxygenLevel;
 
     private Vector3 inputMovement = Vector3.zero;
 
+    
     private float oxygenTankSize;
 
     private bool isSprinting;
@@ -31,7 +36,13 @@ public class PlayerController : MonoBehaviour
         myRB = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
 
+        if (UseCustomOxygenLevels)
+        {
+            PlayerPrefs.SetFloat("OxygenTankSize", CustomMaxOxygenLevel);
+        }
         oxygenTankSize = PlayerPrefs.GetFloat("OxygenTankSize");
+        PlayerPrefs.SetFloat("OxygenLevelCurrent", PlayerPrefs.GetFloat("OxygenTankSize"));
+
         health.health = 1;
         isDead = false;
     }
@@ -60,15 +71,22 @@ public class PlayerController : MonoBehaviour
         inputMovement.x = Input.GetAxisRaw("Horizontal");
         inputMovement.y = Input.GetAxisRaw("Vertical");
         isSprinting = Input.GetKey(KeyCode.LeftShift);
+
         // look at mouse
         Vector2 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.rotation= Quaternion.Euler(0, 0, Mathf.Atan2(mousepos.y - transform.position.y, mousepos.x - transform.position.x) * Mathf.Rad2Deg);// update IsDead
-        PlayerPrefs.SetInt("IsDead", isDead ? 1 : 0);
-    }
+        
+        // Take oxygen away and check is oxygen is gone
+        PlayerPrefs.SetFloat("OxygenLevelCurrent", PlayerPrefs.GetFloat("OxygenLevelCurrent") - Time.deltaTime);
+        if (PlayerPrefs.GetFloat("OxygenLevelCurrent") <= 0)
+        {
+            isDead = true;
+        }
 
-    void playerPickUpFish(string tag, int value)
-    {
-        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + value);
+
+
+        // KEEP THIS AT THE BOTTOM
+        PlayerPrefs.SetInt("IsDead", isDead ? 1 : 0);
     }
     private void FixedUpdate()
     {
@@ -83,6 +101,15 @@ public class PlayerController : MonoBehaviour
         {
             myRB.AddForce(inputMovement.normalized * Speed);
         }
+
+
+
+        // KEEP THIS AT THE BOTTOM
+        PlayerPrefs.SetInt("IsDead", isDead ? 1 : 0);
+    }
+    void playerPickUpFish(string tag, int value)
+    {
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + value);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

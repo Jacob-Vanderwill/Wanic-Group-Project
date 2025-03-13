@@ -18,17 +18,15 @@ public class ScoreManager : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         PlayerPrefs.SetInt("Coins", 0);
-        PlayerPrefs.SetFloat("OxygenTankSize", 0f);
+        PlayerPrefs.SetFloat("OxygenTankSize", 25f);
+        PlayerPrefs.SetFloat("OxygenLevelCurrent", 25f);
         PlayerPrefs.SetInt("IsDead", 0);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.HasKey("Coins"))
-        {
-            coinCount = PlayerPrefs.GetInt("Coins");
-        }
+
     }
 
     // Update is called once per frame
