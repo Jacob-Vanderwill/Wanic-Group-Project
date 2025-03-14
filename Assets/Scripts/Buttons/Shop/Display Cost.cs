@@ -5,23 +5,55 @@ using UnityEngine;
 
 public class DisplayCost : MonoBehaviour
 {
+    [Tooltip("PlayerPrefs.GetInt(*string*)")]
+    public string PlayerPrefsVariableName;
+
     private TextMeshProUGUI TextMeshPro;
+
     private UpgradeOxygenTank UpgradeOxygenTank;
+    private UpgradeSpeed UpgradeSpeed;
 
     private void Start()
     {
+        if (!PlayerPrefs.HasKey(PlayerPrefsVariableName))
+            { Debug.Log("No key '" + PlayerPrefsVariableName + "' found"); }
+
         TextMeshPro = GetComponent<TextMeshProUGUI>();
-        UpgradeOxygenTank = GetComponentInParent<UpgradeOxygenTank>();
+        if (PlayerPrefsVariableName == "OxygenLevel")
+            { UpgradeOxygenTank = GetComponentInParent<UpgradeOxygenTank>(); }
+        if (PlayerPrefsVariableName == "SpeedLevel")
+            { UpgradeSpeed = GetComponentInParent<UpgradeSpeed>(); }
     }
     private void Update()
     {
-        TextMeshPro.text = "Upgrade Cost: " + UpgradeOxygenTank.costsPerLevel[PlayerPrefs.GetInt("OxygenLevel")];
-        
+        if (PlayerPrefsVariableName == "OxygenLevel")
+        {
+            if (PlayerPrefs.GetInt(PlayerPrefsVariableName) + 1 <= UpgradeOxygenTank.costsPerLevel.Length)
+            {
+                TextMeshPro.text = "Upgrade Cost: " + UpgradeOxygenTank.costsPerLevel[PlayerPrefs.GetInt(PlayerPrefsVariableName)];
+            }
+            else
+            {
+                TextMeshPro.text = "Upgrade cost: MAX";
+            }
+        }
+        else if (PlayerPrefsVariableName == "SpeedLevel")
+        {
+            if (PlayerPrefs.GetInt(PlayerPrefsVariableName) + 1 <= UpgradeSpeed.costsPerLevel.Length)
+            {
+                TextMeshPro.text = "Upgrade Cost: " + UpgradeSpeed.costsPerLevel[PlayerPrefs.GetInt(PlayerPrefsVariableName)];
+            }
+            else
+            {
+                TextMeshPro.text = "Upgrade cost: MAX";
+            }
+        }
+
         // debug
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKey(KeyCode.G))
         {
-            PlayerPrefs.SetInt("Coins", 100);
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
         }
 
         //

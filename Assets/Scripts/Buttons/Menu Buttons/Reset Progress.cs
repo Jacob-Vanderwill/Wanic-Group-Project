@@ -6,13 +6,13 @@ public class ResetProgress : MonoBehaviour
 {
     public void resetProgress()
     {
-        DontDestroyOnLoad(this.gameObject);
 
         // initialize basic data
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins"));
         PlayerPrefs.SetInt("Coins", 0);
         PlayerPrefs.SetFloat("OxygenTankSize", 25f);
         PlayerPrefs.SetFloat("OxygenLevelCurrent", 25f);
+        PlayerPrefs.SetFloat("Speed", 10);
         PlayerPrefs.SetInt("IsDead", 0);
 
         // intinialize level

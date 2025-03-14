@@ -10,61 +10,27 @@ using UnityEngine;
 
 public class CameraCollider : MonoBehaviour
 {
-    // Thickness of the colliders
-    public float thickness = 1f;
-    private Camera cam;
-    private GameObject leftBorder, rightBorder, topBorder, bottomBorder;
-
-    void Start()
+    void Awake()
     {
-        cam = Camera.main;
-        if (cam == null)
-        {
-            Debug.LogError("Main Camera not found!");
-            return;
-        }
-
-        // Ensure correct position at start
-        CreateBorders();
-        UpdateBorders(); 
+        AddCollider();
     }
 
-    void LateUpdate()
+    void AddCollider()
     {
-        // Keep borders following the camera
-        UpdateBorders(); 
-    }
+        if (Camera.main == null) { Debug.LogError("Camera.main not found, failed to create edge colliders"); return; }
 
-    void CreateBorders()
-    {
-        leftBorder = CreateCollider("Left Border");
-        rightBorder = CreateCollider("Right Border");
-        topBorder = CreateCollider("Top Border");
-        bottomBorder = CreateCollider("Bottom Border");
-    }
+        var cam = Camera.main;
+        if (!cam.orthographic) { Debug.LogError("Camera.main is not Orthographic, failed to create edge colliders"); return; }
 
-    void UpdateBorders()
-    {
-        float screenHeight = 2f * cam.orthographicSize;
-        float screenWidth = screenHeight * cam.aspect;
-        Vector2 cameraPos = cam.transform.position;
+        var bottomLeft = (Vector2)cam.ScreenToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
+        var topLeft = (Vector2)cam.ScreenToWorldPoint(new Vector3(0, cam.pixelHeight, cam.nearClipPlane));
+        var topRight = (Vector2)cam.ScreenToWorldPoint(new Vector3(cam.pixelWidth, cam.pixelHeight, cam.nearClipPlane));
+        var bottomRight = (Vector2)cam.ScreenToWorldPoint(new Vector3(cam.pixelWidth, 0, cam.nearClipPlane));
 
-        leftBorder.transform.position = new Vector2(cameraPos.x - screenWidth / 2 - thickness / 2, cameraPos.y);
-        rightBorder.transform.position = new Vector2(cameraPos.x + screenWidth / 2 + thickness / 2, cameraPos.y);
-        topBorder.transform.position = new Vector2(cameraPos.x, cameraPos.y + screenHeight / 2 + thickness / 2);
-        bottomBorder.transform.position = new Vector2(cameraPos.x, cameraPos.y - screenHeight / 2 - thickness / 2);
+        // add or use existing EdgeCollider2D
+        var edge = GetComponent<EdgeCollider2D>() == null ? gameObject.AddComponent<EdgeCollider2D>() : GetComponent<EdgeCollider2D>();
 
-        leftBorder.GetComponent<BoxCollider2D>().size = new Vector2(thickness, screenHeight);
-        rightBorder.GetComponent<BoxCollider2D>().size = new Vector2(thickness, screenHeight);
-        topBorder.GetComponent<BoxCollider2D>().size = new Vector2(screenWidth, thickness);
-        bottomBorder.GetComponent<BoxCollider2D>().size = new Vector2(screenWidth, thickness);
-    }
-
-    GameObject CreateCollider(string name)
-    {
-        GameObject border = new GameObject(name);
-        border.transform.parent = transform; // Make sure the borders dont clog the hierarchy
-        BoxCollider2D collider = border.AddComponent<BoxCollider2D>();
-        return border;
+        var edgePoints = new[] { bottomLeft, topLeft, topRight, bottomRight, bottomLeft };
+        edge.points = edgePoints;
     }
 }
