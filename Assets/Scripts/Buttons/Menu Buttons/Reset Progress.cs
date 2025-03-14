@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InitializePlayerPrefs : MonoBehaviour
+public class ResetProgress : MonoBehaviour
 {
-    public void Awake()
+    public void resetProgress()
     {
         DontDestroyOnLoad(this.gameObject);
 

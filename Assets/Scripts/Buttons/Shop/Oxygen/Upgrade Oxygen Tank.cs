@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public class ButtonsInShop : MonoBehaviour
+public class UpgradeOxygenTank : MonoBehaviour
 {
-    public void upgradeOxygenTank(int cost)
+    public int[] costsPerLevel;
+    public void upgradeOxygenTank()
     {
-        if (PlayerPrefs.GetInt("Coins") < cost)
+        if (PlayerPrefs.GetInt("Coins") < costsPerLevel[PlayerPrefs.GetInt("OxygenLevel")])
         {
             return;
         }
+
         int oxygenLevel = PlayerPrefs.GetInt("OxygenLevel");
 
         // starts with lvl 0 (25)
@@ -20,16 +21,12 @@ public class ButtonsInShop : MonoBehaviour
         {
             return;
         }
+
         oxygenLevel++;
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - costsPerLevel[PlayerPrefs.GetInt("OxygenLevel")]);
 
         PlayerPrefs.SetFloat("OxygenTankSize", oxygenTankLevels[oxygenLevel]);
-    }
-    public void upgradeSpeed(int cost)
-    {
 
-    }
-    public void upgradeAttack(int cost)
-    {
-
+        PlayerPrefs.SetInt("OxygenLevel", oxygenLevel);
     }
 }

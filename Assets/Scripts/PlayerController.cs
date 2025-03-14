@@ -4,10 +4,15 @@
  * Last Altered: 3/11/2025
  * Create a script to manage all player inputs
  */
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,10 +23,17 @@ public class PlayerController : MonoBehaviour
     [Header("Oxygen")]
     public bool UseCustomOxygenLevels;
     public float CustomMaxOxygenLevel;
+    [Space]
+    [Header("Death Panel")]
+    public Image DeathPanel;
+    public TextMeshProUGUI text;
+    public TextMeshProUGUI textButton;
+    public Image button;
 
     private Vector3 inputMovement = Vector3.zero;
 
-    
+    private int coinsEarned;
+
     private float oxygenTankSize;
 
     private bool isSprinting;
@@ -45,6 +57,10 @@ public class PlayerController : MonoBehaviour
 
         health.health = 1;
         isDead = false;
+
+        DeathPanel.gameObject.SetActive(false);
+
+        coinsEarned = 0;
     }
 
     // Update is called once per frame
@@ -62,7 +78,10 @@ public class PlayerController : MonoBehaviour
 
         // check if dead
         if (isDead)
-            { return; }
+        {
+            StartCoroutine(backToMenu());
+            return;
+        }
         if (health.health == 0f)
         {
             isDead = true;
@@ -91,7 +110,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (isDead)
-            { return; }
+        {
+            return;
+        }
         // add forces
         if (isSprinting)
         {
@@ -110,6 +131,28 @@ public class PlayerController : MonoBehaviour
     void playerPickUpFish(string tag, int value)
     {
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + value);
+        coinsEarned += value;
+    }
+    IEnumerator backToMenu()
+    {
+        float duration = 2.5f;
+        float elapsedTime = 0f;
+
+        DeathPanel.gameObject.SetActive(true);
+        Color panelColor = DeathPanel.color;
+
+        while (elapsedTime < duration)
+        {
+            // Convert 180 to 0-1 range
+            float alpha = Mathf.Lerp(0f, 200f / 255f, elapsedTime / duration);
+            // fade the things in
+            DeathPanel.color = new Color(panelColor.r, panelColor.g, panelColor.b, alpha);
+            button.color = new Color(button.color.r, button.color.g, button.color.b, alpha);
+            text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
+            textButton.color = new Color(textButton.color.r, textButton.color.g, textButton.color.b, alpha);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
