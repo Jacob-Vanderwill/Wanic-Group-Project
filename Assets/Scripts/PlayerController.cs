@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
         // look at mouse
         Vector2 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.rotation= Quaternion.Euler(0, 0, Mathf.Atan2(mousepos.y - transform.position.y, mousepos.x - transform.position.x) * Mathf.Rad2Deg);// update IsDead
+        transform.rotation= Quaternion.Euler(0, 0, Mathf.Atan2(mousepos.y - transform.position.y, mousepos.x - transform.position.x) * Mathf.Rad2Deg - 90);// update IsDead
         
         // Take oxygen away and check is oxygen is gone
         PlayerPrefs.SetFloat("OxygenLevelCurrent", PlayerPrefs.GetFloat("OxygenLevelCurrent") - Time.deltaTime);
