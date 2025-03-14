@@ -8,14 +8,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class CameraCollider : MonoBehaviour
 {
-    private void Awake()
+    void Awake()
     {
-        addCollider();
+        AddCollider();
     }
-    void addCollider()
+
+    void AddCollider()
     {
         if (Camera.main == null) { Debug.LogError("Camera.main not found, failed to create edge colliders"); return; }
 
@@ -29,9 +29,6 @@ public class CameraCollider : MonoBehaviour
 
         // add or use existing EdgeCollider2D
         var edge = GetComponent<EdgeCollider2D>() == null ? gameObject.AddComponent<EdgeCollider2D>() : GetComponent<EdgeCollider2D>();
-        
-        edge.offset.x.Equals(-1.13);
-        edge.offset.y.Equals(0.33);
 
         var edgePoints = new[] { bottomLeft, topLeft, topRight, bottomRight, bottomLeft };
         edge.points = edgePoints;

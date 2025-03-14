@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jacob Test Scene/Jacob Test.unity
     guid: 0831daf7ab0ddd54b938e891b536eac4
+  - enabled: 1
+    path: Assets/Scenes/Jacob Test Scene/Jacob Shop Test.unity
+    guid: 11ae0d96d2e0dca4eaff0aed0a225991
   m_configObjects: {}
