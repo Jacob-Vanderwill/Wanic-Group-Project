@@ -135,14 +135,12 @@ public class PlayerController : MonoBehaviour
         }
 
 
-
         // KEEP THIS AT THE BOTTOM
         PlayerPrefs.SetInt("IsDead", isDead ? 1 : 0);
     }
-    void playerPickUpFish(string tag, int value)
+    void playerPickUpFish(string tag)
     {
-        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + value);
-        coinsEarned += value;
+        PlayerPrefs.SetInt(tag, PlayerPrefs.GetInt(tag) + 1);
     }
     IEnumerator backToMenu()
     {
@@ -173,22 +171,11 @@ public class PlayerController : MonoBehaviour
         switch (tag)
         {
             case "MainCamera":
-                {
-                    health.health = 0;
-                    break;
-                }
+                { health.health = 0; break; }
             case "Enemy":
-                {
-                    health.health = 0;
-                    break;
-                }
-                /* use the following for collecting fish; change the *value* to the fish's value
-            case "text":
-                {
-                    playerPickUpFish(tag, *value*);
-                    break;
-                }
-                */
+                { health.health = 0; break; }
+            case "Fish":
+                { playerPickUpFish(collision.gameObject.name); break; }
         }
     }
 }
