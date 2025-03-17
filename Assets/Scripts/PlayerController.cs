@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Speed = CustomSpeed;
+            SpeedSprint = Speed + 5;
         }
 
         DeathPanel.gameObject.SetActive(false);
