@@ -16,6 +16,7 @@ public class NetSwing : MonoBehaviour
     public float cooldown;
     public float AttackDegree;
     public float AttackSpeed;
+    public float AttackArea;
     float degreesmoved;
     float currentrotation;
     float cooldownCount = 0;
@@ -26,6 +27,7 @@ public class NetSwing : MonoBehaviour
     void Start()
     {
         ThisRigidbody= GetComponent<Rigidbody2D>();
+        ThisNet = null;
         
     }
 
@@ -37,6 +39,7 @@ public class NetSwing : MonoBehaviour
             cooldownCount = cooldown;
             degreesmoved = AttackDegree;
             ThisNet = Instantiate(Net, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + (AttackDegree * 0.5f)));
+            ThisNet.transform.localScale = new Vector2(0, 0);
             currentrotation = transform.eulerAngles.z - (AttackDegree * 0.5f);
             IsAttacking= true;
             
@@ -51,10 +54,6 @@ public class NetSwing : MonoBehaviour
         {
             ThisNet.transform.position = transform.position;
         }
-        if (ThisNet.transform.eulerAngles.z > currentrotation)
-        {
-
-        }
        
     }
     void FixedUpdate()
@@ -63,13 +62,18 @@ public class NetSwing : MonoBehaviour
         {
             degreesmoved -= AttackDegree / AttackSpeed;
             ThisNet.transform.rotation = Quaternion.Euler(0, 0, ThisNet.transform.eulerAngles.z - AttackDegree / AttackSpeed);
+            float NetSize;
+            NetSize = (-1 * Mathf.Pow((degreesmoved / AttackDegree) - 0.5f, 2) + 1);
+            ThisNet.transform.localScale= new Vector2(NetSize, NetSize);
+
         }
         else
         {
             IsAttacking= false;
-            if(ThisNet !=null)
+            if(ThisNet != null)
             {
                 Destroy(ThisNet);
+                ThisNet = null;
             }
             
         }
