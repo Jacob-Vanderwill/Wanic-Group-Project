@@ -4914,8 +4914,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6686ae32b48f234418e5a6e607260ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  SpeedSprint: 15
+  UseCustomSpeed: 1
+  CustomSpeed: 999
   UseCustomOxygenLevels: 0
   CustomMaxOxygenLevel: 25
   DeathPanel: {fileID: 1405698031}
@@ -5074,7 +5074,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.8584945
+  m_FillAmount: 0.99901843
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
