@@ -16,6 +16,11 @@ public class InitializePlayerPrefs : MonoBehaviour
         PlayerPrefs.SetFloat("Speed", 10);
         PlayerPrefs.SetInt("IsDead", 0);
 
+        // initialize fish vars
+        PlayerPrefs.SetInt("Fish1", 0);
+        PlayerPrefs.SetInt("Fish2", 0);
+        PlayerPrefs.SetInt("Fish3", 0);
+
         // intinialize level
         PlayerPrefs.SetInt("OxygenLevel", 0);
         PlayerPrefs.SetInt("SpeedLevel", 0);

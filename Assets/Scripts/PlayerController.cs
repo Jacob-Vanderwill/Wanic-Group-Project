@@ -16,6 +16,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool UseCustomSpeed;
+    public float CustomSpeed;
     private float Speed;
     private float SpeedSprint;
     [Header("Oxygen")]
@@ -56,8 +58,15 @@ public class PlayerController : MonoBehaviour
         health.health = 1;
         isDead = false;
 
-        Speed = PlayerPrefs.GetFloat("Speed");
-        SpeedSprint = Speed + 5;
+        if (!UseCustomSpeed)
+        {
+            Speed = PlayerPrefs.GetFloat("Speed");
+            SpeedSprint = Speed + 5;
+        }
+        else
+        {
+            Speed = CustomSpeed;
+        }
 
         DeathPanel.gameObject.SetActive(false);
 
