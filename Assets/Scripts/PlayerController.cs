@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
-        health = GetComponent<Health>();
 
         if (UseCustomOxygenLevels)
         {
