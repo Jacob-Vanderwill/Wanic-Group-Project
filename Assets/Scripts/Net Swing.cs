@@ -32,7 +32,7 @@ public class NetSwing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && cooldownCount == 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && cooldownCount <= 0)
         {
             cooldownCount = cooldown;
             degreesmoved = AttackDegree;
@@ -55,6 +55,7 @@ public class NetSwing : MonoBehaviour
         {
 
         }
+       
     }
     void FixedUpdate()
     {
