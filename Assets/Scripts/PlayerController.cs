@@ -32,8 +32,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 inputMovement = Vector3.zero;
 
-    private int coinsEarned;
-
     private float oxygenTankSize;
 
     private bool isSprinting;
@@ -50,9 +48,12 @@ public class PlayerController : MonoBehaviour
 
         if (UseCustomOxygenLevels)
         {
-            PlayerPrefs.SetFloat("OxygenTankSize", CustomMaxOxygenLevel);
+            oxygenTankSize = CustomMaxOxygenLevel;
         }
-        oxygenTankSize = PlayerPrefs.GetFloat("OxygenTankSize");
+        else
+        {
+            oxygenTankSize = PlayerPrefs.GetFloat("OxygenTankSize");
+        }
         PlayerPrefs.SetFloat("OxygenLevelCurrent", PlayerPrefs.GetFloat("OxygenTankSize"));
 
         health.health = 1;
@@ -70,8 +71,6 @@ public class PlayerController : MonoBehaviour
         }
 
         DeathPanel.gameObject.SetActive(false);
-
-        coinsEarned = 0;
     }
 
     // Update is called once per frame
@@ -141,6 +140,7 @@ public class PlayerController : MonoBehaviour
     void playerPickUpFish(string tag)
     {
         PlayerPrefs.SetInt(tag, PlayerPrefs.GetInt(tag) + 1);
+        PlayerPrefs.SetInt(tag + "Caught", 1);
     }
     IEnumerator backToMenu()
     {
