@@ -17,26 +17,45 @@ public class DamageEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Health h = collision.GetComponent<Health>();
-        if (!collision.CompareTag("Enemy"))
+        Health h = collision.gameObject.GetComponent<Health>();
+        string FishName = collision.name;
+        if (collision.CompareTag("Enemy"))
         {
             if (h != null)
             {
                 onDamage.Invoke();
                 h.Damage(damage);
+            }
+            else
+            {
+                if (collision.CompareTag("Fish"))
+                {
+                    PlayerPrefs.SetInt(FishName, PlayerPrefs.GetInt(FishName) + 1);
+                    PlayerPrefs.SetInt(FishName + "Caught", 1);
+                }
             }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Health h = collision.gameObject.GetComponent<Health>();
-        if (!collision.collider.CompareTag("Enemy"))
+        string FishName = collision.collider.name;
+        if (collision.collider.CompareTag("Enemy"))
         {
             if (h != null)
             {
                 onDamage.Invoke();
                 h.Damage(damage);
             }
+            else
+            {
+                if (collision.collider.CompareTag("Fish"))
+                {
+                     PlayerPrefs.SetInt(FishName, PlayerPrefs.GetInt(FishName) + 1);
+                     PlayerPrefs.SetInt(FishName + "Caught", 1);
+                }
+            }
         }
+        
     }
 }

@@ -63,8 +63,8 @@ public class NetSwing : MonoBehaviour
             degreesmoved -= AttackDegree / AttackSpeed;
             ThisNet.transform.rotation = Quaternion.Euler(0, 0, ThisNet.transform.eulerAngles.z - AttackDegree / AttackSpeed);
             float NetSize;
-            NetSize = (-1 * Mathf.Pow((degreesmoved / AttackDegree) - 0.5f, 2) + 1);
-            ThisNet.transform.localScale= new Vector2(NetSize, NetSize);
+            NetSize = (-1 * Mathf.Pow(((degreesmoved / AttackDegree) - 0.5f)*2, 4) + 1);
+            ThisNet.transform.localScale= new Vector2(NetSize * AttackArea, NetSize * AttackArea);
 
         }
         else
@@ -77,5 +77,9 @@ public class NetSwing : MonoBehaviour
             }
             
         }
+    }
+    void FishCollect()
+    {
+
     }
 }
