@@ -16,7 +16,7 @@ public class DisplayCost : MonoBehaviour
     private void Start()
     {
         if (!PlayerPrefs.HasKey(PlayerPrefsVariableName))
-            { Debug.Log("No key '" + PlayerPrefsVariableName + "' found"); }
+            { Debug.LogError("No key '" + PlayerPrefsVariableName + "' found"); }
 
         TextMeshPro = GetComponent<TextMeshProUGUI>();
         if (PlayerPrefsVariableName == "OxygenLevel")

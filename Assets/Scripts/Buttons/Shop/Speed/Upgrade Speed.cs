@@ -5,7 +5,7 @@ using UnityEngine;
 public class UpgradeSpeed : MonoBehaviour
 {
     public int[] costsPerLevel;
-    public int[] speedLevels = { 10, 15, 20, 25, 30, 35, 40, 45, 50, 60 }; // etc...
+    public int[] speedLevels;
     public void upgradeSpeed()
     {
         if (PlayerPrefs.GetInt("Coins") < costsPerLevel[PlayerPrefs.GetInt("SpeedLevel")])
@@ -15,7 +15,7 @@ public class UpgradeSpeed : MonoBehaviour
 
         int speedLevel = PlayerPrefs.GetInt("SpeedLevel");
 
-        if (speedLevel > speedLevels.Length)
+        if (++speedLevel >= speedLevels.Length)
         {
             return;
         }

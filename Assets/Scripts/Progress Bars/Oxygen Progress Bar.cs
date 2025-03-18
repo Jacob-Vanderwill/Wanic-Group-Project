@@ -9,11 +9,6 @@ public class OxygenProgressBar : MonoBehaviour
     public float MaxOxygen;
     public float Current;
 
-    private void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI text;
     public TextMeshProUGUI textButton;
     public Image button;
+    [Space]
+    [Header("Shield")]
+    public float ShieldTime;
+    private float shieldTimer;
 
     private Vector3 inputMovement = Vector3.zero;
 
@@ -54,7 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             oxygenTankSize = PlayerPrefs.GetFloat("OxygenTankSize");
         }
-        PlayerPrefs.SetFloat("OxygenLevelCurrent", PlayerPrefs.GetFloat("OxygenTankSize"));
+        PlayerPrefs.SetFloat("OxygenLevelCurrent", oxygenTankSize);
 
         health.health = 1;
         isDead = false;
@@ -62,12 +66,12 @@ public class PlayerController : MonoBehaviour
         if (!UseCustomSpeed)
         {
             Speed = PlayerPrefs.GetFloat("Speed");
-            SpeedSprint = Speed + 5;
+            SpeedSprint = 10;
         }
         else
         {
             Speed = CustomSpeed;
-            SpeedSprint = Speed + 5;
+            SpeedSprint = 10;
         }
 
         DeathPanel.gameObject.SetActive(false);
@@ -76,16 +80,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // debug
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
-            Debug.Log("Score: " + PlayerPrefs.GetInt("Coins"));
-        }
-
-        //
-
         // check if dead
         if (isDead)
         {
@@ -107,7 +101,7 @@ public class PlayerController : MonoBehaviour
         
         // Take oxygen away and check is oxygen is gone
         PlayerPrefs.SetFloat("OxygenLevelCurrent", PlayerPrefs.GetFloat("OxygenLevelCurrent") - Time.deltaTime);
-        if (PlayerPrefs.GetFloat("OxygenLevelCurrent") <= 0)
+        if (PlayerPrefs.GetFloat("OxygenLevelCurrent") <= 0 || health.health == 0)
         {
             isDead = true;
         }
@@ -131,6 +125,18 @@ public class PlayerController : MonoBehaviour
         else
         {
             myRB.AddForce(inputMovement.normalized * Speed);
+        }
+        if (health.isShieldActive)
+        {
+            if (ShieldTime > shieldTimer)
+            {
+                shieldTimer += Time.deltaTime;
+            }
+            else
+            {
+                ShieldTime = 0;
+                health.isShieldActive = false;
+            }
         }
 
 
@@ -176,6 +182,8 @@ public class PlayerController : MonoBehaviour
                 { health.health = 0; break; }
             case "Fish":
                 { playerPickUpFish(collision.gameObject.name); break; }
+            case "Shield":
+                { health.isShieldActive = true; break; }
         }
     }
 }

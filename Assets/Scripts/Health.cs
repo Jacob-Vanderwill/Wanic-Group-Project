@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
 
     public bool destroyAtZero = true;
 
-    private bool isShieldActive;
+    public bool isShieldActive;
 
     // Unity events
     public UnityEvent onDamage = new UnityEvent();

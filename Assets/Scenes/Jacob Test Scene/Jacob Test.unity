@@ -4922,6 +4922,7 @@ MonoBehaviour:
   text: {fileID: 222768490}
   textButton: {fileID: 640526925}
   button: {fileID: 874528689}
+  ShieldTime: 10
 --- !u!114 &2013027480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4936,6 +4937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   destroyAtZero: 1
+  isShieldActive: 0
   onDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -5074,7 +5076,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.99964255
+  m_FillAmount: 0.39863992
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

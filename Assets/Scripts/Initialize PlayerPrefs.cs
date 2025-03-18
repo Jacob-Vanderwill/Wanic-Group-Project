@@ -1,3 +1,9 @@
+/*
+ * Jacob Vanderwill
+ * Created 3/14/25
+ * Last Altered: 3/18/25
+ * Create a script to initialize the playerprefs when starting the game
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
