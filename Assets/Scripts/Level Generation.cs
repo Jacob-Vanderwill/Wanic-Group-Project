@@ -18,7 +18,7 @@ public class LevelGeneration : MonoBehaviour
 
     private void Start()
     {
-        selectedTile = Random.Range(0, Tiles.Length - 1);
+        selectedTile = Random.Range(0, Tiles.Length);
 
         Vector3 spawnPos = new Vector3(transform.position.x + 15, 0, 1);
 
@@ -38,7 +38,7 @@ public class LevelGeneration : MonoBehaviour
     }
     private void placeTile()
     {
-        selectedTile = Random.Range(0, Tiles.Length - 1);
+        selectedTile = Random.Range(0, Tiles.Length);
 
         Vector3 spawnPos = new Vector3(transform.position.x + 45, 0, 1);
 

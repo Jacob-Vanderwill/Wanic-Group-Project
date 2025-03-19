@@ -17,6 +17,6 @@ public class DisplayCurrentLevel : MonoBehaviour
 
     private void Update()
     {
-        TextMeshPro.text = "Level: " + PlayerPrefs.GetInt(PlayerPrefsVariableName);
+        TextMeshPro.text = "Level: " + (PlayerPrefs.GetInt(PlayerPrefsVariableName) + 1);
     }
 }

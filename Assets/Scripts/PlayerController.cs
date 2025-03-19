@@ -8,6 +8,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour
         
         // Take oxygen away and check is oxygen is gone
         PlayerPrefs.SetFloat("OxygenLevelCurrent", PlayerPrefs.GetFloat("OxygenLevelCurrent") - Time.deltaTime);
-        if (PlayerPrefs.GetFloat("OxygenLevelCurrent") <= 0 || health.health == 0)
+        if (PlayerPrefs.GetFloat("OxygenLevelCurrent") <= 0 || health.health <= 0)
         {
             isDead = true;
         }
@@ -117,6 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
         // add forces
         if (isSprinting)
         {
@@ -134,7 +136,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                ShieldTime = 0;
+                shieldTimer = 0;
                 health.isShieldActive = false;
             }
         }
