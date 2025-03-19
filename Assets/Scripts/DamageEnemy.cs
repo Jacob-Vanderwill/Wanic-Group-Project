@@ -1,7 +1,7 @@
 /*
- * Jacob Vanderwill
+ * Jacob Vanderwill & Hudson Ream
  * 10/31/24
- * last edited: 10/31/24
+ * last edited: 3/19/2025
  * Create a script to handle damage
  */
 
