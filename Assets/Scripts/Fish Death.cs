@@ -17,10 +17,11 @@ public class FishDeath : MonoBehaviour
     public void OnFishDeath()
     {
         NewDeadFish = Instantiate(DeadFish);
-        NewDeadFish.transform.position = this.gameObject.transform.position;
+        NewDeadFish.transform.position = gameObject.transform.position;
         NewDeadFish.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-10, 10);
         NewDeadFish.GetComponent<SpringJoint2D>().connectedBody = Player.GetComponent<Rigidbody2D>();
-        NewDeadFish.GetComponent<SpriteRenderer>().sprite = this.gameObject.GetComponent<SpriteRenderer>().sprite;
-        Destroy(this.gameObject);
+        NewDeadFish.GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+        NewDeadFish.transform.localScale = gameObject.transform.localScale;
+        Destroy(gameObject);
     }
 }
