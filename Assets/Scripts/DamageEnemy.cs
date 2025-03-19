@@ -1,7 +1,7 @@
 /*
- * Jacob Vanderwill
+ * Jacob Vanderwill & Hudson Ream
  * 10/31/24
- * last edited: 10/31/24
+ * last edited: 3/19/2025
  * Create a script to handle damage
  */
 
@@ -19,7 +19,7 @@ public class DamageEnemy : MonoBehaviour
     {
         Health h = collision.gameObject.GetComponent<Health>();
         string FishName = collision.name;
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Fish"))
         {
             if (h != null)
             {
@@ -40,7 +40,7 @@ public class DamageEnemy : MonoBehaviour
     {
         Health h = collision.gameObject.GetComponent<Health>();
         string FishName = collision.collider.name;
-        if (collision.collider.CompareTag("Enemy"))
+        if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Fish"))
         {
             if (h != null)
             {

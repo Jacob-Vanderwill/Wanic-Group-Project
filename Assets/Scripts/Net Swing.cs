@@ -1,5 +1,5 @@
 /*
- * Hudson
+ * Hudson Ream
  * 3/11/2025
  * allows the player to attack with the net
  */
@@ -17,18 +17,16 @@ public class NetSwing : MonoBehaviour
     public float AttackDegree;
     public float AttackSpeed;
     public float AttackArea;
+    public GameObject DeadFish;
     float degreesmoved;
     float currentrotation;
     float cooldownCount = 0;
     bool IsAttacking;
     GameObject ThisNet;
-    Rigidbody2D ThisRigidbody;
     // Start is called before the first frame update
     void Start()
     {
-        ThisRigidbody= GetComponent<Rigidbody2D>();
-        ThisNet = null;
-        
+        ThisNet = null;  
     }
 
     // Update is called once per frame
@@ -48,7 +46,6 @@ public class NetSwing : MonoBehaviour
         {
             cooldownCount -= Time.deltaTime;
         }
-        Debug.Log(cooldownCount);
 
         if (IsAttacking == true)
         {
@@ -77,9 +74,5 @@ public class NetSwing : MonoBehaviour
             }
             
         }
-    }
-    void FishCollect()
-    {
-
     }
 }

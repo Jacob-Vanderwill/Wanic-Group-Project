@@ -133,8 +133,10 @@ GameObject:
   - component: {fileID: 184603046}
   - component: {fileID: 184603045}
   - component: {fileID: 184603044}
+  - component: {fileID: 184603050}
   - component: {fileID: 184603047}
   - component: {fileID: 184603048}
+  - component: {fileID: 184603051}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Fish
@@ -156,19 +158,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   destroyAtZero: 0
+  isShieldActive: 0
   onDamage:
     m_PersistentCalls:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2013027474}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 184603050}
+        m_TargetAssemblyTypeName: FishDeath, Assembly-CSharp
+        m_MethodName: OnFishDeath
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -303,6 +306,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &184603050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184603043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726320441ca954a4597b62a1e5cb7df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeadFish: {fileID: 1418381154318932967, guid: 5b5aca537ba3c2b43a8cef40442cf388, type: 3}
+  Player: {fileID: 2013027474}
+--- !u!114 &184603051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184603043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111bbb69f0cd4884fb5f9f2a78da1f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &661490549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1141,7 @@ MonoBehaviour:
   AttackDegree: 90
   AttackSpeed: 10
   AttackArea: 10
+  DeadFish: {fileID: 1418381154318932967, guid: 5b5aca537ba3c2b43a8cef40442cf388, type: 3}
 --- !u!114 &2013027481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,6 +1156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   destroyAtZero: 1
+  isShieldActive: 0
   onDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -1152,6 +1183,7 @@ MonoBehaviour:
   text: {fileID: 0}
   textButton: {fileID: 0}
   button: {fileID: 0}
+  ShieldTime: 0
 --- !u!114 &2013027483
 MonoBehaviour:
   m_ObjectHideFlags: 0
