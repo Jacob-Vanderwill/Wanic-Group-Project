@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5335266294609295825}
   - component: {fileID: 1970460967281823136}
   - component: {fileID: 4239627260041722867}
-  - component: {fileID: -870014227878312806}
   - component: {fileID: 2178466706666298668}
   - component: {fileID: -3726697526044380476}
+  - component: {fileID: -5957525839365534272}
   m_Layer: 0
   m_Name: Dead Fish
   m_TagString: Untagged
@@ -115,27 +115,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!231 &-870014227878312806
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418381154318932967}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_BreakAction: 3
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 0
-  m_Distance: 0.005
-  m_DampingRatio: 0
-  m_Frequency: 1
 --- !u!58 &2178466706666298668
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -184,3 +163,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TagToDieTo: Player
+--- !u!114 &-5957525839365534272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418381154318932967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdff943945b9fc74d8129888d7f981e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PointOfAttration: {fileID: 3720719954959916867, guid: ec7aaa88f9380b1409c4e36fa330fc5f, type: 3}
+  Magnitude: 1
