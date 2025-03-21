@@ -12,17 +12,11 @@ using UnityEngine;
 public class DieOnTouch : MonoBehaviour
 {
     public string TagToDieTo;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(gameObject.GetComponent<Joint2D>() != null)
-        {
-
-        }
-        Debug.Log(collision.CompareTag(TagToDieTo));
-        Debug.Log(collision.gameObject.name);
         if(collision.CompareTag(TagToDieTo))
         {
-            Debug.Log("quack2");
             Destroy(gameObject);
         }
     }

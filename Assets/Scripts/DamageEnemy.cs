@@ -32,6 +32,7 @@ public class DamageEnemy : MonoBehaviour
                 {
                     PlayerPrefs.SetInt(FishName, PlayerPrefs.GetInt(FishName) + 1);
                     PlayerPrefs.SetInt(FishName + "Caught", 1);
+
                 }
             }
         }
