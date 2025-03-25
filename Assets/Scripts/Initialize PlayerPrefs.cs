@@ -12,6 +12,11 @@ public class InitializePlayerPrefs : MonoBehaviour
 {
     public void Awake()
     {
+        if (PlayerPrefs.HasKey("Active"))
+        {
+            return;
+        }
+
         DontDestroyOnLoad(this.gameObject);
 
         // initialize basic data
@@ -70,5 +75,8 @@ public class InitializePlayerPrefs : MonoBehaviour
         PlayerPrefs.SetInt("OxygenLevel", 0);
         PlayerPrefs.SetInt("SpeedLevel", 0);
         PlayerPrefs.SetInt("AttackLevel", 0);
+
+        // Show its active
+        PlayerPrefs.SetInt("Active", 1);
     }
 }

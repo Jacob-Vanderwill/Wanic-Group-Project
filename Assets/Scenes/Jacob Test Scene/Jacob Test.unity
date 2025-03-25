@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -6.9999976, y: -54.960007}
+  m_AnchoredPosition: {x: -6.9999976, y: -54.960022}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &222768490
@@ -510,8 +510,8 @@ Transform:
   m_GameObject: {fileID: 776783153}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6059, y: 6.3, z: -0.036899365}
-  m_LocalScale: {x: 25.158455, y: 1.632708, z: 1}
+  m_LocalPosition: {x: -1.7673, y: 6.3, z: -0.036899365}
+  m_LocalScale: {x: 29.905855, y: 1.632708, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2052253390}
@@ -1157,8 +1157,8 @@ Transform:
   m_GameObject: {fileID: 1389762343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6059, y: -4.3, z: -0.036899365}
-  m_LocalScale: {x: 25.158455, y: 1.632708, z: 1}
+  m_LocalPosition: {x: -1.7673, y: -4.3, z: -0.036899365}
+  m_LocalScale: {x: 29.905855, y: 1.632708, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2052253390}
@@ -1528,7 +1528,7 @@ Transform:
   m_GameObject: {fileID: 1579538057}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.02, y: -0.26, z: -10}
+  m_LocalPosition: {x: -1.56, y: -0.26, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1594,14 +1594,11 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.13, y: 0.33}
+  m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -8.537162, y: -5.7765284}
-  - {x: -8.537162, y: 5.0765285}
-  - {x: 10.757161, y: 5.0765285}
-  - {x: 10.757161, y: -5.7765284}
-  - {x: -8.537162, y: -5.7765284}
+  - {x: -13.903244, y: -5.686528}
+  - {x: -13.903244, y: 5.1665287}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -1943,7 +1940,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.989966
+  m_FillAmount: 0.9882528
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

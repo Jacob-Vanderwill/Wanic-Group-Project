@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class ExchangeFish : MonoBehaviour
 {
-    [Tooltip("Fish1, Fish2, Fish3")]
+    [Tooltip("Fish1, Fish2, Fish3...Fish10, Fish12")]
     public string WhichFish;
     public int Value;
 
     public void exchangeFish()
     {
+        //
+
+        Debug.Log(WhichFish + ": " + PlayerPrefs.GetInt(WhichFish));
+
+        //
+
         if (PlayerPrefs.GetInt(WhichFish) > 0)
         {
             PlayerPrefs.SetInt(WhichFish, PlayerPrefs.GetInt(WhichFish) - 1);

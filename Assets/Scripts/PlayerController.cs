@@ -107,7 +107,11 @@ public class PlayerController : MonoBehaviour
             isDead = true;
         }
 
+        //
 
+        Debug.Log("Fish1 Count: " + PlayerPrefs.GetInt("Fish1"));
+
+        //
 
         // KEEP THIS AT THE BOTTOM
         PlayerPrefs.SetInt("IsDead", isDead ? 1 : 0);
@@ -145,10 +149,10 @@ public class PlayerController : MonoBehaviour
         // KEEP THIS AT THE BOTTOM
         PlayerPrefs.SetInt("IsDead", isDead ? 1 : 0);
     }
-    void playerPickUpFish(string tag)
+    void playerPickUpFish(string name)
     {
-        PlayerPrefs.SetInt(tag, PlayerPrefs.GetInt(tag) + 1);
-        PlayerPrefs.SetInt(tag + "Caught", 1);
+        PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + 1);
+        PlayerPrefs.SetInt(name + "Caught", 1);
     }
     IEnumerator backToMenu()
     {

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3083375664821289177}
   - component: {fileID: 8504155330488823348}
   - component: {fileID: 9077612304053661292}
+  - component: {fileID: -7050839819510213875}
   m_Layer: 0
   m_Name: SortOfFish
   m_TagString: Fish
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.4836197, b: 0.2320754, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,7 +136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeadFish: {fileID: 1418381154318932967, guid: 5b5aca537ba3c2b43a8cef40442cf388, type: 3}
-  Player: {fileID: 0}
 --- !u!58 &3083375664821289177
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -210,3 +210,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25b7023c50dc814daa56d0dfdeb1a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WanderingRadius: 0
+--- !u!114 &-7050839819510213875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749482003843794319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545ee750a0c063b4bbe98bdc5bdc818b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Fish1
