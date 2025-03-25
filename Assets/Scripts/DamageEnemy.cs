@@ -24,7 +24,7 @@ public class DamageEnemy : MonoBehaviour
             if (h != null)
             {
                 onDamage.Invoke();
-                h.Damage(damage);
+                h.Damage(damage, collision.tag);
             }
             else
             {
@@ -46,7 +46,7 @@ public class DamageEnemy : MonoBehaviour
             if (h != null)
             {
                 onDamage.Invoke();
-                h.Damage(damage);
+                h.Damage(damage, collision.collider.tag);
             }
             else
             {
