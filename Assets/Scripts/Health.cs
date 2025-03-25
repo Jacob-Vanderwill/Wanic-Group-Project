@@ -22,8 +22,9 @@ public class Health : MonoBehaviour
     // Unity events
     public UnityEvent onDamage = new UnityEvent();
     public UnityEvent onDeath = new UnityEvent();
+    public UnityEvent onPlayerKillDeath = new UnityEvent();
 
-    public void Damage(uint amount)
+    public void Damage(uint amount, string Tag)
     {
         if (!isShieldActive)
         {
@@ -32,6 +33,10 @@ public class Health : MonoBehaviour
             {
                 health = 0;
                 onDeath.Invoke();
+                if(Tag == "Net")
+                {
+                    onPlayerKillDeath.Invoke();
+                }
                 if (destroyAtZero)
                 {
                     transform.position = new Vector3(transform.position.x, 50, transform.position.z);
