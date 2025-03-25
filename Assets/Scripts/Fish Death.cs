@@ -18,6 +18,10 @@ public class FishDeath : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
+    private void Update()
+    {
+        
+    }
     public void OnFishDeath()
     {
         NewDeadFish = Instantiate(DeadFish);

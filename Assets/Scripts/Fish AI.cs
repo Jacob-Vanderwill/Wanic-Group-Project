@@ -35,11 +35,16 @@ public class FishAI : MonoBehaviour
             FishIdle();
         }
         
-        if(PathDetection() && AtPointOfTravel())
+        if(PathDetection() || AtPointOfTravel())
         {
-            
+            ThisRB.velocity= Vector2.zero;
+            IsTraveling = false;
         }
-        ThisRB.velocity = Speed * (PointOfTravel - new Vector2 (transform.position.x, transform.position.y)).normalized;
+        else
+        {
+            ThisRB.velocity = Speed * (PointOfTravel - new Vector2 (transform.position.x, transform.position.y)).normalized;
+        }
+        
 
     }
 
@@ -50,6 +55,7 @@ public class FishAI : MonoBehaviour
         RandomDistance = Random.Range(0.00f, WanderingRadius);
         RandomAngle = Random.Range(0.00f, 359.00f);
         PointOfTravel = new Vector2(RandomDistance * Mathf.Cos(RandomAngle), RandomDistance * Mathf.Sin(RandomAngle)) + home;
+        IsTraveling = true;
     }
     private void FishPlayerInteraction()
     {
@@ -61,13 +67,13 @@ public class FishAI : MonoBehaviour
         float VelocityVector;
         VelocityVector = Mathf.Sqrt(ThisRB.velocity.x * ThisRB.velocity.x + ThisRB.velocity.y * ThisRB.velocity.y);
         CheckBoxCenter = new Vector2((ThisRB.velocity.x + transform.position.x), (ThisRB.velocity.y + transform.position.y));
-        return Physics2D.OverlapBox(CheckBoxCenter, new Vector2(VelocityVector * 2, ThisCollider.radius * 2), transform.rotation.eulerAngles.z);
+        return Physics2D.OverlapBox(CheckBoxCenter, new Vector2(VelocityVector * 2, ThisCollider.radius * 2), Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg, 1 << LayerMask.GetMask("Fish"));
     }
     private bool AtPointOfTravel()
     {
         Vector2 DisFromPoint;
         DisFromPoint = PointOfTravel - new Vector2(transform.position.x, transform.position.y);
-        if (Mathf.Abs(DisFromPoint.x) < 0.5f && Mathf.Abs(DisFromPoint.x) < 0.5f)
+        if (Mathf.Abs(DisFromPoint.x) < 0.1f && Mathf.Abs(DisFromPoint.x) < 0.1f)
         {
             return true;
         }

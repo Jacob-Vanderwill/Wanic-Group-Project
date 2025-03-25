@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8504155330488823348}
   - component: {fileID: 9077612304053661292}
   - component: {fileID: -7050839819510213875}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SortOfFish
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -123,6 +123,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onPlayerKillDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4565639220853155158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25b7023c50dc814daa56d0dfdeb1a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WanderingRadius: 0
+  WanderingRadius: 3
+  Speed: 1
 --- !u!114 &-7050839819510213875
 MonoBehaviour:
   m_ObjectHideFlags: 0
