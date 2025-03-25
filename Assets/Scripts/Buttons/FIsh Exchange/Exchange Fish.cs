@@ -11,12 +11,6 @@ public class ExchangeFish : MonoBehaviour
 
     public void exchangeFish()
     {
-        //
-
-        Debug.Log(WhichFish + ": " + PlayerPrefs.GetInt(WhichFish));
-
-        //
-
         if (PlayerPrefs.GetInt(WhichFish) > 0)
         {
             PlayerPrefs.SetInt(WhichFish, PlayerPrefs.GetInt(WhichFish) - 1);
