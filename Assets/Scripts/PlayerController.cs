@@ -40,7 +40,8 @@ public class PlayerController : MonoBehaviour
     private float oxygenTankSize;
 
     private bool isSprinting;
-    private bool isDead;
+    [SerializeField]
+    public bool isDead;
 
     private Rigidbody2D myRB;
     private Health health;

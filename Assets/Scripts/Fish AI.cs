@@ -36,8 +36,8 @@ public class FishAI : MonoBehaviour
         {
             FishIdle();
         }
-        
-        if(PathDetection() || AtPointOfTravel())
+
+        if (PathDetection() || AtPointOfTravel())
         {
             ThisRB.velocity= Vector2.zero;
             IsTraveling = false;
@@ -73,7 +73,9 @@ public class FishAI : MonoBehaviour
         VelocityAngle = Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg;
         ColliderRadPoint = new Vector2(ThisCollider.radius * Mathf.Cos(VelocityAngle), ThisCollider.radius * Mathf.Sin(VelocityAngle));
         VelocityVector = Mathf.Sqrt(ThisRB.velocity.x * ThisRB.velocity.x + ThisRB.velocity.y * ThisRB.velocity.y);
-        CheckBoxCenter = new Vector2((ThisRB.velocity.x + transform.position.x + ColliderRadPoint.x), (ThisRB.velocity.y + transform.position.y + ColliderRadPoint.y));
+        CheckBoxCenter = new Vector2((ThisRB.velocity.x + transform.position.x + ColliderRadPoint.x * 1.05f), (ThisRB.velocity.y + transform.position.y + ColliderRadPoint.y * 1.05f));
+
+        Debug.Log(ColliderRadPoint);
 
         return Physics2D.OverlapBox(CheckBoxCenter, new Vector2((VelocityVector - 1f) * 2 - ThisCollider.radius, ThisCollider.radius * 2), VelocityAngle);
     }

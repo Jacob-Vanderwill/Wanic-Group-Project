@@ -23,15 +23,21 @@ public class NetSwing : MonoBehaviour
     float cooldownCount = 0;
     bool IsAttacking;
     GameObject ThisNet;
+    PlayerController PlayerController;
     // Start is called before the first frame update
     void Start()
     {
         ThisNet = null;  
+        PlayerController = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (PlayerController.isDead == true)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Mouse0) && cooldownCount <= 0)
         {
             cooldownCount = cooldown;
@@ -55,6 +61,11 @@ public class NetSwing : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (PlayerController.isDead == true)
+        {
+            return;
+        }
+
         if (IsAttacking && degreesmoved > 0)
         {
             degreesmoved -= AttackDegree / AttackSpeed;

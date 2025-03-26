@@ -216,7 +216,7 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 55
-  WanderingRadius: 3
+  WanderingRadius: 5
   Speed: 1
 --- !u!114 &-7050839819510213875
 MonoBehaviour:
