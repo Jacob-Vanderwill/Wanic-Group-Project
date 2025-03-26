@@ -510,8 +510,8 @@ Transform:
   m_GameObject: {fileID: 776783153}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7673, y: 6.3, z: -0.036899365}
-  m_LocalScale: {x: 29.905855, y: 1.632708, z: 1}
+  m_LocalPosition: {x: -8.4418, y: 6.3, z: -0.036899365}
+  m_LocalScale: {x: 43.25583, y: 1.632708, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2052253390}
@@ -1157,8 +1157,8 @@ Transform:
   m_GameObject: {fileID: 1389762343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7673, y: -4.3, z: -0.036899365}
-  m_LocalScale: {x: 29.905855, y: 1.632708, z: 1}
+  m_LocalPosition: {x: -8.3815, y: -4.3, z: -0.036899365}
+  m_LocalScale: {x: 43.135, y: 1.632708, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2052253390}
@@ -1452,6 +1452,7 @@ GameObject:
   - component: {fileID: 1579538058}
   - component: {fileID: 1579538061}
   - component: {fileID: 1579538062}
+  - component: {fileID: 1579538064}
   - component: {fileID: 1579538063}
   m_Layer: 0
   m_Name: Main Camera
@@ -1597,12 +1598,28 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -11.207161, y: -5.686528}
-  - {x: -11.207161, y: 5.1665287}
+  - {x: -11.200331, y: -5.686528}
+  - {x: -11.200331, y: 5.1665287}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1579538064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579538057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a02bc88f706a440a69b7625bcce9f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 99
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2013027474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,7 +1691,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 1.5
   m_AngularDrag: 99999
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1767,7 +1784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6686ae32b48f234418e5a6e607260ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseCustomSpeed: 1
+  UseCustomSpeed: 0
   CustomSpeed: 10
   UseCustomOxygenLevels: 0
   CustomMaxOxygenLevel: 25
@@ -1776,6 +1793,7 @@ MonoBehaviour:
   textButton: {fileID: 640526925}
   button: {fileID: 874528689}
   ShieldTime: 10
+  DashCooldown: 4
 --- !u!114 &2013027480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1943,7 +1961,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.57233214
+  m_FillAmount: 0.95810974
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

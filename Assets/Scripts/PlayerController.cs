@@ -34,14 +34,24 @@ public class PlayerController : MonoBehaviour
     [Header("Shield")]
     public float ShieldTime;
     private float shieldTimer;
+    [Space]
+    [Header("Dash")]
+    public float DashCooldown;
+    private float dashCooldownTimer;
+    private float startDrag;
 
     private Vector3 inputMovement = Vector3.zero;
 
     private float oxygenTankSize;
 
+<<<<<<< Updated upstream
     private bool isSprinting;
     [SerializeField]
     public bool isDead;
+=======
+    private bool isSlow;
+    private bool isDead;
+>>>>>>> Stashed changes
 
     private Rigidbody2D myRB;
     private Health health;
@@ -76,6 +86,8 @@ public class PlayerController : MonoBehaviour
             SpeedSprint = 10;
         }
 
+        startDrag = myRB.drag;
+
         DeathPanel.gameObject.SetActive(false);
     }
 
@@ -95,7 +107,21 @@ public class PlayerController : MonoBehaviour
         // get movement
         inputMovement.x = Input.GetAxisRaw("Horizontal");
         inputMovement.y = Input.GetAxisRaw("Vertical");
-        isSprinting = Input.GetKey(KeyCode.LeftShift);
+        isSlow = Input.GetKey(KeyCode.LeftControl);
+
+
+        // Dashing
+        dashCooldownTimer -= Time.deltaTime;
+
+        if (dashCooldownTimer <= 0)
+        {
+            if (Input.GetKey(KeyCode.LeftShift) && inputMovement != Vector3.zero)
+            {
+                StartCoroutine(dash());
+                dashCooldownTimer = DashCooldown;
+            }
+        }
+        //
 
         // look at mouse
         Vector2 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -119,7 +145,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // add forces
-        if (isSprinting)
+        if (isSlow)
         {
             myRB.AddForce(inputMovement.normalized * SpeedSprint);
         }
@@ -149,6 +175,17 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + 1);
         PlayerPrefs.SetInt(name + "Caught", 1);
     }
+    // dash
+    IEnumerator dash()
+    {
+        myRB.velocity = inputMovement * 35;
+        myRB.drag = myRB.drag * 9f;
+
+        yield return new WaitForSeconds(0.2f);
+
+        myRB.drag = startDrag;
+    }
+    // start menu screen when dead
     IEnumerator backToMenu()
     {
         float duration = 2.5f;

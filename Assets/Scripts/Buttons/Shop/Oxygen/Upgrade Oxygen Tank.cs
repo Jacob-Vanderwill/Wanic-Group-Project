@@ -15,7 +15,7 @@ public class UpgradeOxygenTank : MonoBehaviour
 
         int oxygenLevel = PlayerPrefs.GetInt("OxygenLevel");
 
-        if (++oxygenLevel >= oxygenTankLevels.Length)
+        if (oxygenLevel + 1 >= oxygenTankLevels.Length)
         {
             return;
         }

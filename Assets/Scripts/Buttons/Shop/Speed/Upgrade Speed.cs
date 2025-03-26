@@ -15,7 +15,7 @@ public class UpgradeSpeed : MonoBehaviour
 
         int speedLevel = PlayerPrefs.GetInt("SpeedLevel");
 
-        if (++speedLevel >= speedLevels.Length)
+        if (speedLevel + 1 >= speedLevels.Length)
         {
             return;
         }
