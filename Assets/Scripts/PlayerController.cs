@@ -107,12 +107,6 @@ public class PlayerController : MonoBehaviour
             isDead = true;
         }
 
-        //
-
-        Debug.Log("Fish1 Count: " + PlayerPrefs.GetInt("Fish1"));
-
-        //
-
         // KEEP THIS AT THE BOTTOM
         PlayerPrefs.SetInt("IsDead", isDead ? 1 : 0);
     }

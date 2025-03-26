@@ -110,6 +110,9 @@ MonoBehaviour:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
+      m_Calls: []
+  onPlayerKillDeath:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4565639220853155158}
         m_TargetAssemblyTypeName: FishDeath, Assembly-CSharp
@@ -123,9 +126,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onPlayerKillDeath:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &4565639220853155158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -213,6 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25b7023c50dc814daa56d0dfdeb1a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layermask:
+    serializedVersion: 2
+    m_Bits: 55
   WanderingRadius: 3
   Speed: 1
 --- !u!114 &-7050839819510213875

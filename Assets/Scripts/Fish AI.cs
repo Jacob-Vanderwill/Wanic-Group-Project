@@ -15,8 +15,10 @@ public class FishAI : MonoBehaviour
     Rigidbody2D ThisRB;
     Vector2 PointOfTravel;
     bool IsTraveling;
+    public LayerMask layermask;
     public float WanderingRadius;
     public float Speed;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +44,7 @@ public class FishAI : MonoBehaviour
         }
         else
         {
-            ThisRB.velocity = Speed * (PointOfTravel - new Vector2 (transform.position.x, transform.position.y)).normalized;
+            ThisRB.velocity += Speed * Time.deltaTime * (PointOfTravel - new Vector2 (transform.position.x, transform.position.y)).normalized;
         }
         
 
@@ -64,10 +66,16 @@ public class FishAI : MonoBehaviour
     private bool PathDetection()
     {
         Vector2 CheckBoxCenter;
+        Vector2 ColliderRadPoint;
         float VelocityVector;
+        float VelocityAngle;
+
+        VelocityAngle = Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg;
+        ColliderRadPoint = new Vector2(ThisCollider.radius * Mathf.Cos(VelocityAngle), ThisCollider.radius * Mathf.Sin(VelocityAngle));
         VelocityVector = Mathf.Sqrt(ThisRB.velocity.x * ThisRB.velocity.x + ThisRB.velocity.y * ThisRB.velocity.y);
-        CheckBoxCenter = new Vector2((ThisRB.velocity.x + transform.position.x), (ThisRB.velocity.y + transform.position.y));
-        return Physics2D.OverlapBox(CheckBoxCenter, new Vector2(VelocityVector * 2, ThisCollider.radius * 2), Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg, 1 << LayerMask.GetMask("Fish"));
+        CheckBoxCenter = new Vector2((ThisRB.velocity.x + transform.position.x + ColliderRadPoint.x), (ThisRB.velocity.y + transform.position.y + ColliderRadPoint.y));
+
+        return Physics2D.OverlapBox(CheckBoxCenter, new Vector2((VelocityVector - 1f) * 2 - ThisCollider.radius, ThisCollider.radius * 2), VelocityAngle);
     }
     private bool AtPointOfTravel()
     {
@@ -86,5 +94,8 @@ public class FishAI : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(new Vector3(PointOfTravel.x, PointOfTravel.y, 10), 0.1f);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(home, WanderingRadius);
     }
 }
