@@ -213,15 +213,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d25b7023c50dc814daa56d0dfdeb1a53, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
+  m_EditorClassIdentifier:
   layermask:
     serializedVersion: 2
     m_Bits: 55
   WanderingRadius: 5
-=======
-  WanderingRadius: 3
->>>>>>> Stashed changes
   Speed: 1
 --- !u!114 &-7050839819510213875
 MonoBehaviour:
