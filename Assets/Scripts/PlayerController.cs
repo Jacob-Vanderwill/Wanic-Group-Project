@@ -44,14 +44,9 @@ public class PlayerController : MonoBehaviour
 
     private float oxygenTankSize;
 
-<<<<<<< Updated upstream
-    private bool isSprinting;
     [SerializeField]
     public bool isDead;
-=======
     private bool isSlow;
-    private bool isDead;
->>>>>>> Stashed changes
 
     private Rigidbody2D myRB;
     private Health health;
