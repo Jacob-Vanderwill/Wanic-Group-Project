@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Debug = System.Diagnostics.Debug;
 
 public class FishAI : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class FishAI : MonoBehaviour
     bool IsTraveling;
     public float WanderingRadius;
     public float Speed;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,18 +36,17 @@ public class FishAI : MonoBehaviour
         {
             FishIdle();
         }
-
-        if (PathDetection() || AtPointOfTravel())
+        
+        if ((PathDetection() || AtPointOfTravel()) && ThisRB.velocity != Vector2.zero)
         {
-            ThisRB.velocity= Vector2.zero;
             IsTraveling = false;
         }
         else
         {
-            ThisRB.velocity += Speed * (PointOfTravel - new Vector2 (transform.position.x, transform.position.y)).normalized;
+            ThisRB.velocity += Speed * Time.deltaTime * (PointOfTravel - new Vector2 (transform.position.x, transform.position.y)).normalized;
         }
         
-
+        ThisCollider.enabled = true;
     }
 
     private void FishIdle()
@@ -63,36 +64,31 @@ public class FishAI : MonoBehaviour
     }
     private bool PathDetection()
     {
-        Vector2 CheckBoxCenter;
-        float VelocityVector;
-        VelocityVector = Mathf.Sqrt(ThisRB.velocity.x * ThisRB.velocity.x + ThisRB.velocity.y * ThisRB.velocity.y);
-<<<<<<< Updated upstream
-        CheckBoxCenter = new Vector2((ThisRB.velocity.x + transform.position.x + ColliderRadPoint.x * 1.05f), (ThisRB.velocity.y + transform.position.y + ColliderRadPoint.y * 1.05f));
-
-        Debug.Log(ColliderRadPoint);
-
-        return Physics2D.OverlapBox(CheckBoxCenter, new Vector2((VelocityVector - 1f) * 2 - ThisCollider.radius, ThisCollider.radius * 2), VelocityAngle);
-=======
-        CheckBoxCenter = new Vector2((ThisRB.velocity.x + transform.position.x), (ThisRB.velocity.y + transform.position.y));
-        return Physics2D.OverlapBox(CheckBoxCenter, new Vector2(VelocityVector * 2, ThisCollider.radius * 2), Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg, 1 << LayerMask.GetMask("Fish"));
->>>>>>> Stashed changes
+        /*if (ThisRB.velocity.magnitude <= 0.1)
+        {
+            return false;
+        }*/
+        float VelocityAngle;
+        VelocityAngle = Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg;
+        ThisCollider.enabled = false;
+        return Physics2D.CircleCast(ThisRB.position, ThisCollider.radius, ThisRB.velocity.normalized, ThisRB.velocity.magnitude);
     }
     private bool AtPointOfTravel()
     {
         Vector2 DisFromPoint;
         DisFromPoint = PointOfTravel - new Vector2(transform.position.x, transform.position.y);
-        if (Mathf.Abs(DisFromPoint.x) < 0.1f && Mathf.Abs(DisFromPoint.x) < 0.1f)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return (Mathf.Abs(DisFromPoint.x) < 0.1f && Mathf.Abs(DisFromPoint.x) < 0.1f);
     }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(new Vector3(PointOfTravel.x, PointOfTravel.y, 10), 0.1f);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(home, WanderingRadius);
+        Gizmos.color = Color.cyan;
+        ThisCollider = GetComponent<CircleCollider2D>();
+        ThisRB = GetComponent<Rigidbody2D>();
+        Gizmos.DrawWireSphere(ThisRB.position+(ThisRB.velocity.normalized*ThisRB.velocity.magnitude),ThisCollider.radius);
     }
 }
