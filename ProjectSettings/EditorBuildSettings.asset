@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jacob Test Scene/Jacob Fish Exchange Test.unity
     guid: 4cef9b2121d4246439c647717c1879aa
+  - enabled: 1
+    path: Assets/Scenes/Jacob Test Scene/Jacob Collection Test.unity
+    guid: 79da2311fb943604d8658293a2521c4d
   m_configObjects: {}

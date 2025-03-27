@@ -80,8 +80,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0.4836197, b: 0.2320754, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ec1fac90e1328734d935672c632b866d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  destroyAtZero: 1
+  destroyAtZero: 0
   isShieldActive: 0
   onDamage:
     m_PersistentCalls:
@@ -213,10 +213,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d25b7023c50dc814daa56d0dfdeb1a53, type: 3}
   m_Name: 
-  m_EditorClassIdentifier:
-  layermask:
-    serializedVersion: 2
-    m_Bits: 55
+  m_EditorClassIdentifier: 
   WanderingRadius: 5
   Speed: 1
 --- !u!114 &-7050839819510213875

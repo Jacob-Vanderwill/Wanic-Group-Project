@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     private float oxygenTankSize;
 
     private bool isSprinting;
-    [SerializeField]
+    [HideInInspector]
     public bool isDead;
     private bool isSlow;
 
@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
         // KEEP THIS AT THE BOTTOM
         PlayerPrefs.SetInt("IsDead", isDead ? 1 : 0);
     }
-    void playerPickUpFish(string name)
+    public void playerPickUpFish(string name)
     {
         PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + 1);
         PlayerPrefs.SetInt(name + "Caught", 1);
@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
     // dash
     IEnumerator dash()
     {
-        myRB.velocity = inputMovement * 35;
+        myRB.velocity = inputMovement.normalized * 35;
         myRB.drag = myRB.drag * 9f;
 
         yield return new WaitForSeconds(0.2f);
@@ -214,8 +214,6 @@ public class PlayerController : MonoBehaviour
                 { health.health = 0; break; }
             case "Enemy":
                 { health.health = 0; break; }
-            case "Fish":
-                { playerPickUpFish(collision.gameObject.name); break; }
             case "Shield":
                 { health.isShieldActive = true; break; }
         }

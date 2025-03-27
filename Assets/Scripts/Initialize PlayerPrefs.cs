@@ -27,6 +27,9 @@ public class InitializePlayerPrefs : MonoBehaviour
         PlayerPrefs.SetFloat("Speed", 10);
         PlayerPrefs.SetInt("IsDead", 0);
 
+        // highscore (depth)
+        PlayerPrefs.SetInt("DepthHighscore", 0);
+
         // initialize if fish have been caught
         PlayerPrefs.SetInt("Fish1Caught", 0);
         PlayerPrefs.SetInt("Fish2Caught", 0);

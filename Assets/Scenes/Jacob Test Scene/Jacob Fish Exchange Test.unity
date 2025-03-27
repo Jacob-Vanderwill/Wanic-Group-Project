@@ -2855,6 +2855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trade Button
       objectReference: {fileID: 0}
+    - target: {fileID: 2158154468719529455, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ec1fac90e1328734d935672c632b866d, type: 3}
     - target: {fileID: 2945205530101805964, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.85858005

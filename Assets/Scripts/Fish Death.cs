@@ -14,13 +14,11 @@ public class FishDeath : MonoBehaviour
     public GameObject DeadFish;
     GameObject Player;
     GameObject NewDeadFish;
+    PlayerController Controller;
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-    }
-    private void Update()
-    {
-        
+        Controller = Player.GetComponent<PlayerController>();
     }
     public void OnFishDeath()
     {
@@ -31,6 +29,9 @@ public class FishDeath : MonoBehaviour
         NewDeadFish.GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
         NewDeadFish.GetComponent<SpriteRenderer>().color = gameObject.GetComponent<SpriteRenderer>().color;
         NewDeadFish.transform.localScale = gameObject.transform.localScale;
+
+        Controller.playerPickUpFish(this.name);
+
         Destroy(gameObject);
     }
 }
