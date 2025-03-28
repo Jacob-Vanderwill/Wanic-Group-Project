@@ -16,6 +16,7 @@ public class FishAI : MonoBehaviour
     CircleCollider2D ThisCollider;
     Rigidbody2D ThisRB;
     SpriteRenderer ThisSprite;
+    ParticleSystem ThisParticle;
     Vector2 PointOfTravel;
     private Health health;
     bool IsTraveling;
@@ -30,6 +31,7 @@ public class FishAI : MonoBehaviour
         home = transform.position;
         ThisRB = GetComponent<Rigidbody2D>();
         ThisSprite = GetComponent<SpriteRenderer>();
+        ThisParticle = GetComponent<ParticleSystem>();
         IsTraveling = false;
         health = GetComponent<Health>();
     }
@@ -39,8 +41,10 @@ public class FishAI : MonoBehaviour
     {
         if (health.health <= 0)
         {
+            ThisParticle.Play();
             return;
         }
+        ThisParticle.Stop();
         if (ThisRB.velocity.x != 0 || ThisRB.velocity.y != 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg);
