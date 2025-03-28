@@ -13,6 +13,7 @@ using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -116,6 +117,8 @@ public class PlayerController : MonoBehaviour
         {
             isDead = true;
         }
+        animator.SetBool("IsCatching", Input.GetMouseButtonDown(0));
+
         // get movement
         inputMovement.x = Input.GetAxisRaw("Horizontal");
         inputMovement.y = Input.GetAxisRaw("Vertical");
