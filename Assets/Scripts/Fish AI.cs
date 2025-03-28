@@ -6,6 +6,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Debug = System.Diagnostics.Debug;
 
@@ -14,6 +15,7 @@ public class FishAI : MonoBehaviour
     Vector2 home;
     CircleCollider2D ThisCollider;
     Rigidbody2D ThisRB;
+    SpriteRenderer ThisSprite;
     Vector2 PointOfTravel;
     bool IsTraveling;
     public float WanderingRadius;
@@ -26,18 +28,24 @@ public class FishAI : MonoBehaviour
         ThisCollider = GetComponent<CircleCollider2D>();
         home = transform.position;
         ThisRB = GetComponent<Rigidbody2D>();
+        ThisSprite = GetComponent<SpriteRenderer>();
         IsTraveling = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!IsTraveling)
+        if (ThisRB.velocity.x != 0 || ThisRB.velocity.y != 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg);
+            ThisSprite.flipY = (ThisRB.velocity.x < 0);
+        }
+        if (!IsTraveling && ThisRB.velocity.magnitude < 0.3f)
         {
             FishIdle();
         }
         
-        if ((PathDetection() || AtPointOfTravel()) && ThisRB.velocity != Vector2.zero)
+        if (PathDetection() || AtPointOfTravel())
         {
             IsTraveling = false;
         }
@@ -45,8 +53,6 @@ public class FishAI : MonoBehaviour
         {
             ThisRB.velocity += Speed * Time.deltaTime * (PointOfTravel - new Vector2 (transform.position.x, transform.position.y)).normalized;
         }
-        
-        ThisCollider.enabled = true;
     }
 
     private void FishIdle()
@@ -64,14 +70,18 @@ public class FishAI : MonoBehaviour
     }
     private bool PathDetection()
     {
-        /*if (ThisRB.velocity.magnitude <= 0.1)
-        {
-            return false;
-        }*/
         float VelocityAngle;
         VelocityAngle = Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg;
-        ThisCollider.enabled = false;
-        return Physics2D.CircleCast(ThisRB.position, ThisCollider.radius, ThisRB.velocity.normalized, ThisRB.velocity.magnitude);
+        
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(ThisRB.position, ThisCollider.radius, ThisRB.velocity.normalized, ThisRB.velocity.magnitude * 2);
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider != ThisCollider)
+            {
+                return true;
+            }
+        }
+        return false;
     }
     private bool AtPointOfTravel()
     {
@@ -86,9 +96,10 @@ public class FishAI : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(home, WanderingRadius);
+        
         Gizmos.color = Color.cyan;
         ThisCollider = GetComponent<CircleCollider2D>();
         ThisRB = GetComponent<Rigidbody2D>();
-        Gizmos.DrawWireSphere(ThisRB.position+(ThisRB.velocity.normalized*ThisRB.velocity.magnitude),ThisCollider.radius);
+        Gizmos.DrawWireSphere(ThisRB.position+(ThisRB.velocity.normalized*ThisRB.velocity.magnitude * 2),ThisCollider.radius);
     }
 }

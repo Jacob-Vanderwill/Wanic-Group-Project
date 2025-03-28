@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SortOfFish
       objectReference: {fileID: 0}
+    - target: {fileID: 7186201358215514570, guid: 6577dfc16ed74ab42a2ac7521cc44b3d, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8902693360641962299, guid: 6577dfc16ed74ab42a2ac7521cc44b3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.355158
@@ -199,13 +203,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SortOfFish (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7186201358215514570, guid: 6577dfc16ed74ab42a2ac7521cc44b3d, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186201358215514570, guid: 6577dfc16ed74ab42a2ac7521cc44b3d, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8902693360641962299, guid: 6577dfc16ed74ab42a2ac7521cc44b3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.59
       objectReference: {fileID: 0}
     - target: {fileID: 8902693360641962299, guid: 6577dfc16ed74ab42a2ac7521cc44b3d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8902693360641962299, guid: 6577dfc16ed74ab42a2ac7521cc44b3d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -528,6 +540,8 @@ MonoBehaviour:
   textButton: {fileID: 0}
   button: {fileID: 0}
   ShieldTime: 10
+  DashCooldown: 0
+  isDead: 0
 --- !u!114 &982613814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,7 +780,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1579538057}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -992,6 +1006,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7186201358215514570, guid: 6577dfc16ed74ab42a2ac7521cc44b3d, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902693360641962299, guid: 6577dfc16ed74ab42a2ac7521cc44b3d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902693360641962299, guid: 6577dfc16ed74ab42a2ac7521cc44b3d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8902693360641962299, guid: 6577dfc16ed74ab42a2ac7521cc44b3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.02
@@ -1053,10 +1079,10 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1579538060}
   - {fileID: 2052253390}
   - {fileID: 4714822497189874233}
   - {fileID: 149650682}
   - {fileID: 185494646}
   - {fileID: 982613818}
   - {fileID: 287531983}
+  - {fileID: 1579538060}
