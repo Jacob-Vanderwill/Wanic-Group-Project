@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -51,12 +52,14 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D myRB;
     private Health health;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
+        animator = GetComponent<Animator>();
 
         if (UseCustomOxygenLevels)
         {
@@ -93,9 +96,22 @@ public class PlayerController : MonoBehaviour
         // check if dead
         if (isDead)
         {
+            // death animation
+            animator.SetBool("IsDead", isDead);
             StartCoroutine(backToMenu());
             return;
         }
+
+        // animator things
+        if (myRB.velocity.x < 0.1f && myRB.velocity.y < 0.1f)
+        {
+            animator.SetBool("IsMoving", false);
+        }
+        else
+        {
+            animator.SetBool("IsMoving", true);
+        }
+
         if (health.health == 0f)
         {
             isDead = true;
@@ -121,7 +137,7 @@ public class PlayerController : MonoBehaviour
 
         // look at mouse
         Vector2 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.rotation= Quaternion.Euler(0, 0, Mathf.Atan2(mousepos.y - transform.position.y, mousepos.x - transform.position.x) * Mathf.Rad2Deg - 90);// update IsDead
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2(mousepos.y - transform.position.y, mousepos.x - transform.position.x) * Mathf.Rad2Deg - 90), 0.03f);// update IsDead
         
         // Take oxygen away and check is oxygen is gone
         PlayerPrefs.SetFloat("OxygenLevelCurrent", PlayerPrefs.GetFloat("OxygenLevelCurrent") - Time.deltaTime);
