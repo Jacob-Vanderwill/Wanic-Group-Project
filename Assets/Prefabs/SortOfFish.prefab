@@ -17,12 +17,9 @@ GameObject:
   - component: {fileID: 9077612304053661292}
   - component: {fileID: -7050839819510213875}
   - component: {fileID: 1528908501101087687}
-<<<<<<< Updated upstream
-=======
   - component: {fileID: 5408518920493338914}
   - component: {fileID: 5143027011907783073}
   - component: {fileID: -1592232976543196318}
->>>>>>> Stashed changes
   m_Layer: 3
   m_Name: SortOfFish
   m_TagString: Fish
