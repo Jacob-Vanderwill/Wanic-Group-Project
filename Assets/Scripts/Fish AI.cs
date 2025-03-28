@@ -48,7 +48,7 @@ public class FishAI : MonoBehaviour
         if (ThisRB.velocity.x != 0 || ThisRB.velocity.y != 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg);
-            ThisSprite.flipY = (ThisRB.velocity.x < 0);
+            ThisSprite.flipY = (ThisRB.velocity.y < 0);
         }
         if (!IsTraveling && ThisRB.velocity.magnitude < 0.3f)
         {
