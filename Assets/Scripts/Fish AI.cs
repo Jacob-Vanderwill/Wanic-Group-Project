@@ -17,6 +17,7 @@ public class FishAI : MonoBehaviour
     Rigidbody2D ThisRB;
     SpriteRenderer ThisSprite;
     Vector2 PointOfTravel;
+    private Health health;
     bool IsTraveling;
     public float WanderingRadius;
     public float Speed;
@@ -30,11 +31,16 @@ public class FishAI : MonoBehaviour
         ThisRB = GetComponent<Rigidbody2D>();
         ThisSprite = GetComponent<SpriteRenderer>();
         IsTraveling = false;
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (health.health <= 0)
+        {
+            return;
+        }
         if (ThisRB.velocity.x != 0 || ThisRB.velocity.y != 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg);
