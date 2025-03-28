@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WanderingRadius: 5
+  PlayerDetectionRadius: 5
   Speed: 1
 --- !u!114 &-7050839819510213875
 MonoBehaviour:

@@ -19,8 +19,12 @@ public class FishAI : MonoBehaviour
     Vector2 PointOfTravel;
     private Health health;
     bool IsTraveling;
+    GameObject Player;
+    Vector2[] BackToHome;
     public float WanderingRadius;
-    public float Speed;
+    public float PlayerDetectionRadius;
+    public float IdleSpeed;
+    public float ChaseSpeed;
 
 
     // Start is called before the first frame update
@@ -32,11 +36,19 @@ public class FishAI : MonoBehaviour
         ThisSprite = GetComponent<SpriteRenderer>();
         IsTraveling = false;
         health = GetComponent<Health>();
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+       /* if(new Vector2(Player.transform.position.x, Player.transform.position.y).magnitude <= PlayerDetectionRadius)
+        {
+            if(PathDetection(Player.transform.position, new Collider2D[ThisCollider]))
+            {
+
+            }
+        }*/
         if (health.health <= 0)
         {
             return;
@@ -51,38 +63,45 @@ public class FishAI : MonoBehaviour
             FishIdle();
         }
         
-        if (PathDetection() || AtPointOfTravel())
+        if (PathDetection(ThisRB.velocity, ThisCollider) || AtPointOfTravel())
         {
             IsTraveling = false;
         }
         else
         {
-            ThisRB.velocity += Speed * Time.deltaTime * (PointOfTravel - new Vector2 (transform.position.x, transform.position.y)).normalized;
+            ThisRB.velocity += IdleSpeed * Time.deltaTime * (PointOfTravel - new Vector2 (transform.position.x, transform.position.y)).normalized;
         }
     }
 
     private void FishIdle()
     {
-        float RandomAngle;
-        float RandomDistance;
-        RandomDistance = Random.Range(0.00f, WanderingRadius);
-        RandomAngle = Random.Range(0.00f, 359.00f);
+        float RandomDistance = Random.Range(0.00f, WanderingRadius);
+        float RandomAngle = Random.Range(0.00f, 359.00f);
         PointOfTravel = new Vector2(RandomDistance * Mathf.Cos(RandomAngle), RandomDistance * Mathf.Sin(RandomAngle)) + home;
         IsTraveling = true;
+    }
+    private void FishChase()
+    {
+        PointOfTravel = Player.transform.position;
     }
     private void FishPlayerInteraction()
     {
         
     }
-    private bool PathDetection()
+    private bool PathDetection(Vector2 Path, Collider2D[] Cignore)
     {
-        float VelocityAngle;
-        VelocityAngle = Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg;
-        
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(ThisRB.position, ThisCollider.radius, ThisRB.velocity.normalized, ThisRB.velocity.magnitude * 2);
+        bool B;
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(ThisRB.position, ThisCollider.radius, Path.normalized, Path.magnitude * 2);
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider != ThisCollider)
+            foreach(Collider2D C in Cignore)
+            {
+                if (hit.collider != ThisCollider)
+                {
+                 B= true;
+                }
+            }
+            if(B == true)
             {
                 return true;
             }
@@ -107,5 +126,8 @@ public class FishAI : MonoBehaviour
         ThisCollider = GetComponent<CircleCollider2D>();
         ThisRB = GetComponent<Rigidbody2D>();
         Gizmos.DrawWireSphere(ThisRB.position+(ThisRB.velocity.normalized*ThisRB.velocity.magnitude * 2),ThisCollider.radius);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, PlayerDetectionRadius);
     }
 }
