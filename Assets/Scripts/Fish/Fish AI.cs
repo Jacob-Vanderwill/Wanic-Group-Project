@@ -8,6 +8,7 @@ using Debug = System.Diagnostics.Debug;
 
 public class FishAI : MonoBehaviour
 {
+    bool B;
     Vector2 home;
     CircleCollider2D ThisCollider;
     Rigidbody2D ThisRB;
@@ -21,6 +22,7 @@ public class FishAI : MonoBehaviour
     public float PlayerDetectionRadius;
     public float IdleSpeed;
     public float ChaseSpeed;
+    public float LookRotationOffest;
 
 
     // Start is called before the first frame update
@@ -38,28 +40,30 @@ public class FishAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if(new Vector2(Player.transform.position.x, Player.transform.position.y).magnitude <= PlayerDetectionRadius)
-        {
-            if(PathDetection(Player.transform.position, new Collider2D[ThisCollider]))
+         if(new Vector2(Player.transform.position.x - transform.position.x, Player.transform.position.y - transform.position.y).magnitude <= PlayerDetectionRadius)
+         {
+            print("blah");
+             if(PathDetection(Player.transform.position - transform.position, new Collider2D[2] {ThisCollider, Player.GetComponent<Collider2D>()}))
             {
-
-            }
-        }*/
+                print("blah");
+                PointOfTravel = Player.transform.position;
+             }
+         }
         if (health.health <= 0)
         {
             return;
         }
         if (ThisRB.velocity.x != 0 || ThisRB.velocity.y != 0)
         {
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg);
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg + LookRotationOffest);
             ThisSprite.flipY = (ThisRB.velocity.y < 0);
         }
         if (!IsTraveling && ThisRB.velocity.magnitude < 0.3f)
         {
             FishIdle();
         }
-        
-        if (PathDetection(ThisRB.velocity, ThisCollider) || AtPointOfTravel())
+
+        if (PathDetection(ThisRB.velocity, new Collider2D[1] {ThisCollider}) || AtPointOfTravel())
         {
             IsTraveling = false;
         }
@@ -86,15 +90,15 @@ public class FishAI : MonoBehaviour
     }
     private bool PathDetection(Vector2 Path, Collider2D[] Cignore)
     {
-        bool B;
         RaycastHit2D[] hits = Physics2D.CircleCastAll(ThisRB.position, ThisCollider.radius, Path.normalized, Path.magnitude * 2);
         foreach (RaycastHit2D hit in hits)
         {
+            B = true;
             foreach(Collider2D C in Cignore)
             {
-                if (hit.collider != ThisCollider)
+                if (hit.collider == C)
                 {
-                 B= true;
+                 B = false;
                 }
             }
             if(B == true)

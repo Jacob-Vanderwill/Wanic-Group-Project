@@ -219,7 +219,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WanderingRadius: 5
   PlayerDetectionRadius: 5
-  Speed: 1
+  IdleSpeed: 1
+  ChaseSpeed: 1
+  LookRotationOffest: 0
 --- !u!114 &-7050839819510213875
 MonoBehaviour:
   m_ObjectHideFlags: 0
