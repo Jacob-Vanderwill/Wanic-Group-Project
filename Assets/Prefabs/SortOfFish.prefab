@@ -245,8 +245,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockback: 3
-<<<<<<< Updated upstream
-=======
 --- !u!198 &5408518920493338914
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5074,4 +5072,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
->>>>>>> Stashed changes
