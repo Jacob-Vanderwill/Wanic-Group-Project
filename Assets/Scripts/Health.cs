@@ -15,6 +15,9 @@ public class Health : MonoBehaviour
     [SerializeField]
     public uint health = 1;
 
+    [HideInInspector]
+    public uint maxHealth;
+
     public bool destroyAtZero = true;
 
     public bool isShieldActive;
@@ -23,7 +26,10 @@ public class Health : MonoBehaviour
     public UnityEvent onDamage = new UnityEvent();
     public UnityEvent onDeath = new UnityEvent();
     public UnityEvent onPlayerKillDeath = new UnityEvent();
-
+    private void Awake()
+    {
+        maxHealth = health;
+    }
     public void Damage(uint amount, string Tag)
     {
         if (!isShieldActive)

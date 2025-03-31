@@ -451,6 +451,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trade Button (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2158154468719529455, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1327349053, guid: 3d7e1c0fa1c9f774ea3189ee59ab3910, type: 3}
     - target: {fileID: 2945205530101805964, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.85858005
@@ -511,9 +515,25 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: exchangeFish
       objectReference: {fileID: 0}
+    - target: {fileID: 6116326588978101885, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
+      propertyPath: FishName
+      value: Fish3
+      objectReference: {fileID: 0}
     - target: {fileID: 6149777305375682880, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404485857307854373, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404485857307854373, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404485857307854373, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.13725491
       objectReference: {fileID: 0}
     - target: {fileID: 7580216031189569541, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
@@ -967,7 +987,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Coins: 0'
+  m_text: 'Coins: 38'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2370,6 +2390,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trade Button (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2158154468719529455, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1747110700, guid: abe8e9e83f230af43b769a7c186c48bb, type: 3}
     - target: {fileID: 2945205530101805964, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.85858005
@@ -2430,9 +2454,25 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: exchangeFish
       objectReference: {fileID: 0}
+    - target: {fileID: 6116326588978101885, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
+      propertyPath: FishName
+      value: Fish2
+      objectReference: {fileID: 0}
     - target: {fileID: 6149777305375682880, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404485857307854373, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404485857307854373, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404485857307854373, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.13725491
       objectReference: {fileID: 0}
     - target: {fileID: 7580216031189569541, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
@@ -2858,7 +2898,7 @@ PrefabInstance:
     - target: {fileID: 2158154468719529455, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ec1fac90e1328734d935672c632b866d, type: 3}
+      objectReference: {fileID: 681851649, guid: e2c59ef5f7e2ed5409a70fb40c035ccc, type: 3}
     - target: {fileID: 2945205530101805964, guid: 07567c7d1d485a4409c95fc8dfdbda9b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.85858005
