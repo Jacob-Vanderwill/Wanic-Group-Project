@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 5143027011907783073}
   - component: {fileID: -1592232976543196318}
   m_Layer: 3
-  m_Name: SortOfFish
+  m_Name: Fish5
   m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 681851649, guid: e2c59ef5f7e2ed5409a70fb40c035ccc, type: 3}
+  m_Sprite: {fileID: -835286375, guid: e2e954d63f2ed7048af2d97a041e43bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 545ee750a0c063b4bbe98bdc5bdc818b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Fish1
+  Name: Fish4
 --- !u!114 &1528908501101087687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5061,7 +5061,7 @@ Animator:
   m_GameObject: {fileID: 6749482003843794319}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 415459ac25f759748ac02a8f19baf0de, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7525f1fd3ca38ab478a73f6911ee0d3e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
