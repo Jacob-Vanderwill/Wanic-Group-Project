@@ -1746,8 +1746,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -11.207791, y: -5.686528}
-  - {x: -11.207791, y: 5.1665287}
+  - {x: -11.207161, y: -5.686528}
+  - {x: -11.207161, y: 5.1665287}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -1922,6 +1922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  maxHealth: 0
   destroyAtZero: 1
   isShieldActive: 0
   onDamage:
@@ -2132,7 +2133,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 0.8069632
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
