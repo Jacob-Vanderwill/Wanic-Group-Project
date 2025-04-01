@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  maxHealth: 0
   destroyAtZero: 0
   isShieldActive: 0
   onDamage:
@@ -218,7 +219,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WanderingRadius: 5
-  Speed: 1
+  PlayerDetectionRadius: 5
+  IdleSpeed: 1
+  ChaseSpeed: 1
+  LookRotationOffest: -45
 --- !u!114 &-7050839819510213875
 MonoBehaviour:
   m_ObjectHideFlags: 0

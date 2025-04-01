@@ -25,13 +25,13 @@ public class LevelGeneration : MonoBehaviour
         GameObject tile = Instantiate(Tiles[selectedTile], spawnPos, Quaternion.identity);
 
         // +5 gives empty space between tiles
-        lastX = spawnPos.x + 5;
+        lastX = spawnPos.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x + 50 >= lastX + 25)
+        if (transform.position.x + 40 >= lastX)
         {
             placeTile();
         }
@@ -40,11 +40,11 @@ public class LevelGeneration : MonoBehaviour
     {
         selectedTile = Random.Range(0, Tiles.Length);
 
-        Vector3 spawnPos = new Vector3(transform.position.x + 45, 0, 1);
+        Vector3 spawnPos = new Vector3(lastX + 30, 0, 1);
 
         GameObject tile = Instantiate(Tiles[selectedTile], spawnPos, Quaternion.identity);
 
         // +10 gives empty space between tiles
-        lastX = spawnPos.x + 10;
+        lastX = spawnPos.x;
     }
 }
