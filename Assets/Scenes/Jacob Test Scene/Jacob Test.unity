@@ -1682,7 +1682,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1579538060}
   - component: {fileID: 1579538059}
-  - component: {fileID: 1579538058}
   - component: {fileID: 1579538061}
   - component: {fileID: 1579538062}
   - component: {fileID: 1579538064}
@@ -1694,14 +1693,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1579538058
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579538057}
-  m_Enabled: 1
 --- !u!20 &1579538059
 Camera:
   m_ObjectHideFlags: 0
@@ -1968,7 +1959,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.87114835
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1989,6 +1980,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5958826402643251502, guid: 42c1f990342eab3438b2ba98a9613e2f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 182698975456687991, guid: 42c1f990342eab3438b2ba98a9613e2f, type: 3}
       propertyPath: text
       value: 
