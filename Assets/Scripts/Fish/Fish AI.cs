@@ -16,8 +16,10 @@ public class FishAI : MonoBehaviour
     Vector2 PointOfTravel;
     private Health health;
     bool IsTraveling;
+    bool IsChasing;
     GameObject Player;
-    Vector2[] BackToHome;
+    Vector3[] BackToHome;
+
     public float WanderingRadius;
     public float PlayerDetectionRadius;
     public float IdleSpeed;
@@ -33,6 +35,7 @@ public class FishAI : MonoBehaviour
         ThisRB = GetComponent<Rigidbody2D>();
         ThisSprite = GetComponent<SpriteRenderer>();
         IsTraveling = false;
+        IsChasing = false;
         health = GetComponent<Health>();
         Player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -40,36 +43,56 @@ public class FishAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if(new Vector2(Player.transform.position.x - transform.position.x, Player.transform.position.y - transform.position.y).magnitude <= PlayerDetectionRadius)
-         {
-            print("blah");
-             if(PathDetection(Player.transform.position - transform.position, new Collider2D[2] {ThisCollider, Player.GetComponent<Collider2D>()}))
-            {
-                print("blah");
-                PointOfTravel = Player.transform.position;
-             }
-         }
         if (health.health <= 0)
         {
             return;
         }
-        if (ThisRB.velocity.x != 0 || ThisRB.velocity.y != 0)
+
+        if(new Vector2(Player.transform.position.x - transform.position.x, Player.transform.position.y - transform.position.y).magnitude <= PlayerDetectionRadius)
         {
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg + LookRotationOffest);
-            ThisSprite.flipY = (ThisRB.velocity.y < 0);
+            if(PathDetection(Player.transform.position - transform.position, new Collider2D[2] {ThisCollider, Player.GetComponent<Collider2D>()}))
+            {
+                FishChase();
+            }
         }
-        if (!IsTraveling && ThisRB.velocity.magnitude < 0.3f)
+        else
+        {
+            IsChasing = false;
+            IsTraveling = false;
+        }
+
+        if (!IsTraveling && ThisRB.velocity.magnitude < 0.3f && !IsChasing)
         {
             FishIdle();
         }
 
-        if (PathDetection(ThisRB.velocity, new Collider2D[1] {ThisCollider}) || AtPointOfTravel())
+        if (PathDetection(ThisRB.velocity, new Collider2D[2] {ThisCollider, Player.GetComponent<Collider2D>()}) || AtPointOfTravel())
         {
             IsTraveling = false;
         }
         else
         {
-            ThisRB.velocity += IdleSpeed * Time.deltaTime * (PointOfTravel - new Vector2 (transform.position.x, transform.position.y)).normalized;
+            if(IsChasing)
+            {
+                ThisRB.velocity += ChaseSpeed * Time.deltaTime * (PointOfTravel - new Vector2(transform.position.x, transform.position.y)).normalized;
+            }
+            else
+            {
+                ThisRB.velocity += IdleSpeed * Time.deltaTime * (PointOfTravel - new Vector2 (transform.position.x, transform.position.y)).normalized;
+            }
+            
+        }
+        if (ThisRB.velocity.x != 0 || ThisRB.velocity.y != 0)
+        {
+            ThisSprite.flipY = (ThisRB.velocity.y < 0);
+            if(ThisSprite.flipY)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg + LookRotationOffest);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(ThisRB.velocity.y, ThisRB.velocity.x) * Mathf.Rad2Deg - LookRotationOffest);
+            }
         }
     }
 
@@ -82,11 +105,9 @@ public class FishAI : MonoBehaviour
     }
     private void FishChase()
     {
+        IsChasing = true;
+        IsTraveling = true;
         PointOfTravel = Player.transform.position;
-    }
-    private void FishPlayerInteraction()
-    {
-        
     }
     private bool PathDetection(Vector2 Path, Collider2D[] Cignore)
     {
