@@ -18,17 +18,18 @@ public class FishHurt : MonoBehaviour
     public Color HurtColor;
     private Color startColor;
 
-    IEnumerator fishHurt(Color hurtColor)
+    IEnumerator fishHurt()
     {
-        spriteRenderer.color = hurtColor;
+        spriteRenderer.color = HurtColor;
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(5f);
 
         spriteRenderer.color = startColor;
     }
     private void Start()
     {
         health = GetComponent<Health>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         lastHealth = health.health;
     }
@@ -39,7 +40,7 @@ public class FishHurt : MonoBehaviour
         //screenshake stuff 
         if (lastHealth != health.health)
         {
-            fishHurt(HurtColor);
+            StartCoroutine(fishHurt());
         }
     }
     private void FixedUpdate()

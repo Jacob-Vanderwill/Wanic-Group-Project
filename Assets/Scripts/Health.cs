@@ -5,15 +5,17 @@
  * Create a script to handle health
  */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    public uint health = 1;
+    public uint health;
 
     [HideInInspector]
     public uint maxHealth;
