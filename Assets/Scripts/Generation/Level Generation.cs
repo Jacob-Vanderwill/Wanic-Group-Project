@@ -40,7 +40,7 @@ public class LevelGeneration : MonoBehaviour
     {
         selectedTile = Random.Range(0, Tiles.Length);
 
-        Vector3 spawnPos = new Vector3(lastX + 30, 0, 1);
+        Vector3 spawnPos = new Vector3(lastX + 28, 0, 1);
 
         GameObject tile = Instantiate(Tiles[selectedTile], spawnPos, Quaternion.identity);
 
