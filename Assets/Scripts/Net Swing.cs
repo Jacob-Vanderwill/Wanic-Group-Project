@@ -9,10 +9,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NetSwing : MonoBehaviour
 {
-    
+    public UnityEvent OnSwing = new UnityEvent();
     public GameObject Net;
     public float cooldown;
     public float AttackDegree;
@@ -47,7 +48,8 @@ public class NetSwing : MonoBehaviour
             ThisNet.transform.localScale = new Vector2(0, 0);
             currentrotation = transform.eulerAngles.z - (AttackDegree * 0.5f);
             IsAttacking= true;
-            
+            OnSwing.Invoke();
+
         }
         if(cooldownCount > 0)
         {
