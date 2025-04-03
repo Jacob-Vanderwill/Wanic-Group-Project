@@ -5,21 +5,26 @@ using UnityEngine;
 
 public class ExchangeFish : MonoBehaviour
 {
-    [Tooltip("Fish1, Fish2, Fish3...Fish10, Fish12")]
-    public string WhichFish;
-    public int Value;
+    [Tooltip("1, 2, 3, 4")]
+    public int FishIndex;
+    private int[] Value;
 
-    public void exchangeFish()
+    private void Start()
     {
-        if (PlayerPrefs.GetInt(WhichFish) > 0)
+        Value = new int[] { 1, 1, 1, 3, 5, 5, 5, 15 };
+    }
+
+    public void exchangeFish(int fishIndex)
+    {
+        if (PlayerPrefs.GetInt("Fish" + fishIndex) > 0)
         {
-            PlayerPrefs.SetInt(WhichFish, PlayerPrefs.GetInt(WhichFish) - 1);
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + Value);
+            PlayerPrefs.SetInt("Fish" + fishIndex, PlayerPrefs.GetInt("Fish" + fishIndex) - 1);
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + Value[fishIndex]);
         }
     }
-    public void exchangeAllFish()
+    public void exchangeAllFish(int fishIndex)
     {
-        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + (PlayerPrefs.GetInt(WhichFish) * Value));
-        PlayerPrefs.SetInt(WhichFish, 0);
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + (PlayerPrefs.GetInt("Fish"+ fishIndex) * Value[fishIndex]));
+        PlayerPrefs.SetInt("Fish" + fishIndex, 0);
     }
 }

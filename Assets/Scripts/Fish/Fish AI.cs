@@ -180,8 +180,8 @@ public class FishAI : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, PlayerDetectionRadius);
-        
-        Gizmos.color = Color.red
+
+        Gizmos.color = Color.red;
         foreach (Vector3 v in BackToHome)
         {
             Gizmos.DrawSphere(v, 0.1f);

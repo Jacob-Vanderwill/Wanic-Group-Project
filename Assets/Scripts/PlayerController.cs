@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     public float DashCooldown;
     private float dashCooldownTimer;
     private float startDrag;
+    public AudioClip DashAudio;
 
     private Vector3 inputMovement = Vector3.zero;
 
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
     public bool isDead;
     private bool isSlow;
 
+    private AudioSource audioSource;
     private Rigidbody2D myRB;
     private Health health;
     private Animator animator;
@@ -189,12 +191,18 @@ public class PlayerController : MonoBehaviour
     {
         PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + 1);
         PlayerPrefs.SetInt(name + "Caught", 1);
+
+        PlayerPrefs.SetFloat("OxygenLevelCurrent", 
+                             PlayerPrefs.GetFloat("OxygenLevelCurrent") + 
+                            (PlayerPrefs.GetFloat("OxygenTankSize") * 0.10f));
     }
     // dash
     IEnumerator dash()
     {
         myRB.velocity = inputMovement.normalized * 35;
         myRB.drag = myRB.drag * 9f;
+
+        audioSource.PlayOneShot(DashAudio);
 
         yield return new WaitForSeconds(0.2f);
 
@@ -203,24 +211,8 @@ public class PlayerController : MonoBehaviour
     // start menu screen when dead
     IEnumerator backToMenu()
     {
-        float duration = 2.5f;
-        float elapsedTime = 0f;
-
         DeathPanel.gameObject.SetActive(true);
-        Color panelColor = DeathPanel.color;
-
-        while (elapsedTime < duration)
-        {
-            // Convert 180 to 0-1 range
-            float alpha = Mathf.Lerp(0f, 200f / 255f, elapsedTime / duration);
-            // fade the things in
-            DeathPanel.color = new Color(panelColor.r, panelColor.g, panelColor.b, alpha);
-            button.color = new Color(button.color.r, button.color.g, button.color.b, alpha);
-            text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
-            textButton.color = new Color(textButton.color.r, textButton.color.g, textButton.color.b, alpha);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+        yield return null;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
