@@ -3,7 +3,12 @@
  * 3/25/2025
  * Fish AI
  */
+
+using System.Collections.Generic;
+using System.Drawing;
+using Unity.VisualScripting;
 using UnityEngine;
+using Color = UnityEngine.Color;
 using Debug = System.Diagnostics.Debug;
 
 public class FishAI : MonoBehaviour
@@ -15,10 +20,12 @@ public class FishAI : MonoBehaviour
     SpriteRenderer ThisSprite;
     Vector2 PointOfTravel;
     private Health health;
+    bool isIdle;
     bool IsTraveling;
     bool IsChasing;
+    bool IsGoingHome;
     GameObject Player;
-    Vector3[] BackToHome;
+    Stack<Vector3> BackToHome;
 
     public float WanderingRadius;
     public float PlayerDetectionRadius;
@@ -43,30 +50,33 @@ public class FishAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsChasing = false;
+        IsGoingHome = false;
+        isIdle = false;
         if (health.health <= 0)
         {
             return;
         }
-
-        if(new Vector2(Player.transform.position.x - transform.position.x, Player.transform.position.y - transform.position.y).magnitude <= PlayerDetectionRadius)
+        //if player is in detection radius and path to player is clear
+        if(new Vector2(Player.transform.position.x - transform.position.x, Player.transform.position.y - transform.position.y).magnitude <= PlayerDetectionRadius && Vector2.zero == PathDetection(Player.transform.position - transform.position, new Collider2D[2] {ThisCollider, Player.GetComponent<Collider2D>()}))
         {
-            if(PathDetection(Player.transform.position - transform.position, new Collider2D[2] {ThisCollider, Player.GetComponent<Collider2D>()}))
-            {
-                FishChase();
-            }
+            FishChase();
         }
         else
         {
-            IsChasing = false;
-            IsTraveling = false;
+            if (!IsTraveling && ThisRB.velocity.magnitude < 0.3f && !IsChasing && BackToHome.Count == 0)
+            {
+               FishIdle();
+            }
+            else
+            {
+                FishGoHome();
+            }
         }
 
-        if (!IsTraveling && ThisRB.velocity.magnitude < 0.3f && !IsChasing)
-        {
-            FishIdle();
-        }
 
-        if (PathDetection(ThisRB.velocity, new Collider2D[2] {ThisCollider, Player.GetComponent<Collider2D>()}) || AtPointOfTravel())
+
+        if (Vector2.zero == PathDetection(ThisRB.velocity, new Collider2D[2] {ThisCollider, Player.GetComponent<Collider2D>()}) || AtPointOfTravel())
         {
             IsTraveling = false;
         }
@@ -101,6 +111,7 @@ public class FishAI : MonoBehaviour
         float RandomDistance = Random.Range(0.00f, WanderingRadius);
         float RandomAngle = Random.Range(0.00f, 359.00f);
         PointOfTravel = new Vector2(RandomDistance * Mathf.Cos(RandomAngle), RandomDistance * Mathf.Sin(RandomAngle)) + home;
+        isIdle = true;
         IsTraveling = true;
     }
     private void FishChase()
@@ -108,8 +119,27 @@ public class FishAI : MonoBehaviour
         IsChasing = true;
         IsTraveling = true;
         PointOfTravel = Player.transform.position;
+        if (BackToHome.Count == 0)
+        {
+            BackToHome.Push(transform.position);
+        }
+        else if ((BackToHome.Peek() - transform.position).magnitude >= 1f)
+        {
+            BackToHome.Push(transform.position);
+        }
     }
-    private bool PathDetection(Vector2 Path, Collider2D[] Cignore)
+
+    private void FishGoHome()
+    {
+        IsGoingHome = true;
+        IsTraveling = true;
+        PointOfTravel = BackToHome.Peek();
+        if (AtPointOfTravel())
+        {
+            BackToHome.Pop();
+        }
+    }
+    private Vector2 PathDetection(Vector2 Path, Collider2D[] Cignore)
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(ThisRB.position, ThisCollider.radius, Path.normalized, Path.magnitude * 2);
         foreach (RaycastHit2D hit in hits)
@@ -124,10 +154,10 @@ public class FishAI : MonoBehaviour
             }
             if(B == true)
             {
-                return true;
+                return hit.centroid - hit.point;
             }
         }
-        return false;
+        return Vector2.zero;
     }
     private bool AtPointOfTravel()
     {
@@ -150,5 +180,12 @@ public class FishAI : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, PlayerDetectionRadius);
+        
+        Gizmos.color = Color.red
+        foreach (Vector3 v in BackToHome)
+        {
+            Gizmos.DrawSphere(v, 0.1f);
+        }
+        
     }
 }
