@@ -221,7 +221,7 @@ MonoBehaviour:
   WanderingRadius: 5
   PlayerDetectionRadius: 5
   IdleSpeed: 1
-  ChaseSpeed: 1
+  ChaseSpeed: 2
   LookRotationOffest: -45
 --- !u!114 &-7050839819510213875
 MonoBehaviour:

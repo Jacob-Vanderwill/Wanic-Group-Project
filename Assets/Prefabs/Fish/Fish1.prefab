@@ -192,7 +192,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -221,7 +221,7 @@ MonoBehaviour:
   WanderingRadius: 5
   PlayerDetectionRadius: 5
   IdleSpeed: 1
-  ChaseSpeed: 1
+  ChaseSpeed: 2
   LookRotationOffest: 0
 --- !u!114 &2052535907102617091
 MonoBehaviour:
