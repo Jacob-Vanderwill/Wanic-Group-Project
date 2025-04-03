@@ -25,7 +25,7 @@ public class FishAI : MonoBehaviour
     bool IsChasing;
     bool IsGoingHome;
     GameObject Player;
-    Stack<Vector3> BackToHome;
+    Stack<Vector3> BackToHome = new Stack<Vector3>();
 
     public float WanderingRadius;
     public float PlayerDetectionRadius;
@@ -50,6 +50,10 @@ public class FishAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(PathDetection(ThisRB.velocity, new Collider2D[2] { ThisCollider, Player.GetComponent<Collider2D>() }));
+        print(IsTraveling);
+        print(PointOfTravel + "PointOFTraftl");
+        print(BackToHome.Count + "GLLLEEEP");
         IsChasing = false;
         IsGoingHome = false;
         isIdle = false;
@@ -57,28 +61,37 @@ public class FishAI : MonoBehaviour
         {
             return;
         }
+
         //if player is in detection radius and path to player is clear
+        print(Vector2.zero == PathDetection(Player.transform.position - transform.position, new Collider2D[2] { ThisCollider, Player.GetComponent<Collider2D>() }));
+
         if(new Vector2(Player.transform.position.x - transform.position.x, Player.transform.position.y - transform.position.y).magnitude <= PlayerDetectionRadius && Vector2.zero == PathDetection(Player.transform.position - transform.position, new Collider2D[2] {ThisCollider, Player.GetComponent<Collider2D>()}))
         {
             FishChase();
         }
         else
         {
-            if (!IsTraveling && ThisRB.velocity.magnitude < 0.3f && !IsChasing && BackToHome.Count == 0)
+            if (!IsTraveling && BackToHome.Count == 0)    
             {
                FishIdle();
             }
-            else
+            else if(BackToHome.Count != 0)
             {
-                FishGoHome();
-            }
+               FishGoHome();
+            }       
         }
 
-
-
-        if (Vector2.zero == PathDetection(ThisRB.velocity, new Collider2D[2] {ThisCollider, Player.GetComponent<Collider2D>()}) || AtPointOfTravel())
+        if (Vector2.zero != PathDetection(ThisRB.velocity, new Collider2D[2] {ThisCollider, Player.GetComponent<Collider2D>()}) || AtPointOfTravel())
         {
             IsTraveling = false;
+            if (IsChasing)
+            {
+                ThisRB.velocity += PathDetection(ThisRB.velocity, new Collider2D[2] { ThisCollider, Player.GetComponent<Collider2D>() }).normalized * ChaseSpeed * Time.deltaTime;
+            }
+            else
+            {
+                ThisRB.velocity += PathDetection(ThisRB.velocity, new Collider2D[2] { ThisCollider, Player.GetComponent<Collider2D>() }).normalized * IdleSpeed * Time.deltaTime;
+            }
         }
         else
         {
@@ -90,8 +103,9 @@ public class FishAI : MonoBehaviour
             {
                 ThisRB.velocity += IdleSpeed * Time.deltaTime * (PointOfTravel - new Vector2 (transform.position.x, transform.position.y)).normalized;
             }
-            
         }
+
+        // fish rotation
         if (ThisRB.velocity.x != 0 || ThisRB.velocity.y != 0)
         {
             ThisSprite.flipY = (ThisRB.velocity.y < 0);
@@ -149,6 +163,10 @@ public class FishAI : MonoBehaviour
             {
                 if (hit.collider == C)
                 {
+                    if(IsChasing && hit.collider.CompareTag("Fish"))
+                    {
+                        B = false;
+                    }
                  B = false;
                 }
             }
@@ -163,7 +181,7 @@ public class FishAI : MonoBehaviour
     {
         Vector2 DisFromPoint;
         DisFromPoint = PointOfTravel - new Vector2(transform.position.x, transform.position.y);
-        return (Mathf.Abs(DisFromPoint.x) < 0.1f && Mathf.Abs(DisFromPoint.x) < 0.1f);
+        return (Mathf.Abs(DisFromPoint.x) < 0.1f && Mathf.Abs(DisFromPoint.y) < 0.1f);
     }
     private void OnDrawGizmos()
     {
