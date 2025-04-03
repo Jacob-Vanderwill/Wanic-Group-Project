@@ -19,7 +19,7 @@ public class MusicPlayer : MonoBehaviour
     {
         
         musicPlayer = GetComponents<AudioSource>();
-        musicPlayer[0].volume = 1;
+        musicPlayer[0].volume = 0.5f;
         musicPlayer[1].volume = 0;
         musicPlayer[2].volume = 0;
         musicPlayer[0].clip = BaseMusicTrack;
@@ -33,11 +33,11 @@ public class MusicPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x >= 300)
+        if(transform.position.x >= 300 && musicPlayer[1].volume <= 0.5f)
         {  
             musicPlayer[1].volume += Time.deltaTime;
         }
-        if(transform.position.x >= 600)
+        if(transform.position.x >= 600 && musicPlayer[2].volume <= 0.5f)
         {
             musicPlayer[2].volume += Time.deltaTime/3;
         }
