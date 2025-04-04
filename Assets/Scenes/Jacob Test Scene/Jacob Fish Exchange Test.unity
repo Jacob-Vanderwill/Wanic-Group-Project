@@ -1033,10 +1033,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Coins: 0'
+  m_text: 'Coins: 19'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 39dd2ae5c826ee641bb76e5da3c4f912, type: 2}
+  m_sharedMaterial: {fileID: 1729363559303858185, guid: 39dd2ae5c826ee641bb76e5da3c4f912, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1353,8 +1353,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00002839925, y: -105.330025}
-  m_SizeDelta: {x: 228.19, y: 496.44}
+  m_AnchoredPosition: {x: -0.00002839925, y: -254.6}
+  m_SizeDelta: {x: 228.19, y: 794.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &965858274
 MonoBehaviour:
@@ -1463,7 +1463,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 347903255}
   m_Direction: 2
   m_Value: 1.0000001
-  m_Size: 0.5756586
+  m_Size: 0.35948077
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

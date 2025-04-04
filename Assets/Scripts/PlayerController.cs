@@ -196,7 +196,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
         // KEEP THIS AT THE BOTTOM
         PlayerPrefs.SetInt("IsDead", isDead ? 1 : 0);
     }
