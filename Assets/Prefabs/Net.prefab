@@ -14,7 +14,11 @@ GameObject:
   - component: {fileID: 3002105547570086473}
   - component: {fileID: 2109168488871145615}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - component: {fileID: -3644644012388207070}
+=======
+  - component: {fileID: 4044292499197782927}
+>>>>>>> Stashed changes
 =======
   - component: {fileID: 4044292499197782927}
 >>>>>>> Stashed changes
@@ -149,8 +153,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockback: 5
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!114 &-3644644012388207070
 MonoBehaviour:
+=======
+--- !u!60 &4044292499197782927
+PolygonCollider2D:
+>>>>>>> Stashed changes
 =======
 --- !u!60 &4044292499197782927
 PolygonCollider2D:
@@ -162,11 +171,14 @@ PolygonCollider2D:
   m_GameObject: {fileID: 5164342618041890757}
   m_Enabled: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd5ae4b63e31bee4f8308f2a3c1bc4c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 =======
+=======
+>>>>>>> Stashed changes
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -211,4 +223,7 @@ PolygonCollider2D:
       - {x: 0.36695686, y: -0.18732719}
       - {x: 0.38695684, y: 0.022672806}
   m_UseDelaunayMesh: 0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
