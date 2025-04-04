@@ -15,13 +15,14 @@ using UnityEngine.Events;
 
 public class NetSwing : MonoBehaviour
 {
-    public UnityEvent OnSwing = new UnityEvent();
     public GameObject Net;
     private float cooldown;
     public float AttackDegree;
     private float AttackSpeed;
     public float AttackArea;
     public GameObject DeadFish;
+    public AudioSource AudioSource;
+    public AudioClip swingsound;
     float degreesmoved;
     float currentrotation;
     float cooldownCount = 0;
@@ -67,8 +68,7 @@ public class NetSwing : MonoBehaviour
             ThisNet.transform.localScale = new Vector2(0, 0);
             currentrotation = transform.eulerAngles.z - (AttackDegree * 0.5f);
             IsAttacking= true;
-            OnSwing.Invoke();
-
+            AudioSource.PlayOneShot(swingsound, 0.65f);
         }
         if(cooldownCount > 0)
         {

@@ -55,6 +55,11 @@ public class PlayerController : MonoBehaviour
     private Health health;
     private Animator animator;
 
+    //Audio variables
+    public AudioSource AudioSource;
+    public AudioClip deathsound;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -100,6 +105,9 @@ public class PlayerController : MonoBehaviour
             // death animation
             animator.SetBool("IsDead", isDead);
             StartCoroutine(backToMenu());
+            // death sound
+            print("grant");
+            AudioSource.PlayOneShot(deathsound);
             return;
         }
 
@@ -135,6 +143,8 @@ public class PlayerController : MonoBehaviour
                 // audioSource.PlayOneShot(DashAudio, 1);
                 StartCoroutine(dash());
                 dashCooldownTimer = DashCooldown;
+                //plays dash audio
+                AudioSource.PlayOneShot(DashAudio);
             }
         }
         //

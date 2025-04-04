@@ -50,10 +50,6 @@ public class FishAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(PathDetection(ThisRB.velocity, new Collider2D[2] { ThisCollider, Player.GetComponent<Collider2D>() }));
-        print(IsTraveling);
-        print(PointOfTravel + "PointOFTraftl");
-        print(BackToHome.Count + "GLLLEEEP");
         IsChasing = false;
         IsGoingHome = false;
         isIdle = false;
@@ -63,8 +59,6 @@ public class FishAI : MonoBehaviour
         }
 
         //if player is in detection radius and path to player is clear
-        print(Vector2.zero == PathDetection(Player.transform.position - transform.position, new Collider2D[2] { ThisCollider, Player.GetComponent<Collider2D>() }));
-
         if(new Vector2(Player.transform.position.x - transform.position.x, Player.transform.position.y - transform.position.y).magnitude <= PlayerDetectionRadius && Vector2.zero == PathDetection(Player.transform.position - transform.position, new Collider2D[2] {ThisCollider, Player.GetComponent<Collider2D>()}))
         {
             FishChase();

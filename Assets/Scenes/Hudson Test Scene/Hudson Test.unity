@@ -862,6 +862,10 @@ PrefabInstance:
       propertyPath: OnSwing.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 182698975456687991, guid: 42c1f990342eab3438b2ba98a9613e2f, type: 3}
+      propertyPath: CustomMaxOxygenLevel
+      value: 999
+      objectReference: {fileID: 0}
     - target: {fileID: 584956200357010522, guid: 42c1f990342eab3438b2ba98a9613e2f, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -965,6 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioPlayer: {fileID: 1788321185}
+  volume: 0
 --- !u!82 &1788321185
 AudioSource:
   m_ObjectHideFlags: 0
