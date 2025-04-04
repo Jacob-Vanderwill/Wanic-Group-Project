@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 8504155330488823348}
   - component: {fileID: 9077612304053661292}
   - component: {fileID: -7050839819510213875}
-  - component: {fileID: 1528908501101087687}
   - component: {fileID: 5408518920493338914}
   - component: {fileID: 5143027011907783073}
   - component: {fileID: -1592232976543196318}
@@ -236,19 +235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Fish8
---- !u!114 &1528908501101087687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6749482003843794319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81f2fe79479c4a3488c537b240f9a583, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockback: 3
 --- !u!198 &5408518920493338914
 ParticleSystem:
   m_ObjectHideFlags: 0

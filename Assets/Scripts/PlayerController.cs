@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public bool UseCustomSpeed;
     public float CustomSpeed;
     private float Speed;
+    private float startSpeed;
     private float SpeedSprint;
     [Header("Oxygen")]
     public bool UseCustomOxygenLevels;
@@ -82,16 +83,16 @@ public class PlayerController : MonoBehaviour
 
         if (!UseCustomSpeed)
         {
-            Speed = 15;
-            SpeedSprint = 10;
+            Speed = 10;
         }
         else
         {
             Speed = CustomSpeed;
-            SpeedSprint = 10;
         }
+        SpeedSprint = 5;
 
         startDrag = myRB.drag;
+        startSpeed = Speed;
 
         DeathPanel.gameObject.SetActive(false);
     }
@@ -208,6 +209,10 @@ public class PlayerController : MonoBehaviour
                              PlayerPrefs.GetFloat("OxygenLevelCurrent") + 
                             (PlayerPrefs.GetFloat("OxygenTankSize") * 0.10f));
     }
+    public void boostSpeed()
+    {
+        StartCoroutine(speedBoost());
+    }
     // dash
     IEnumerator dash()
     {
@@ -217,6 +222,15 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         myRB.drag = startDrag;
+    }
+    // speed boost
+    IEnumerator speedBoost()
+    {
+        Speed = Speed = 15f;
+
+        yield return new WaitForSeconds(10f);
+
+        Speed = startSpeed;
     }
     // start menu screen when dead
     IEnumerator backToMenu()
@@ -249,19 +263,7 @@ public class PlayerController : MonoBehaviour
             case "MainCamera":
                 { health.health = 0; break; }
             case "Enemy":
-                {
-                    Vector3 direction = transform.position - collision.transform.position;
-                    float directionSpeed;
-
-                    // you have to reverse the x axis for some reason
-                    Vector3 temp = new Vector3(-myRB.velocity.x, myRB.velocity.y, 0);
-                    Vector3 rotatedVelocity = Quaternion.LookRotation(direction) * temp;
-                    directionSpeed = rotatedVelocity.z;
-
-                    if (directionSpeed > 1)
-                        { health.health = 0; }
-                    break;
-                }
+                { health.health = 0; break; }
             case "Fish":
                 { health.health = 0; break; }
             case "Shield":

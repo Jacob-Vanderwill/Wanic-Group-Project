@@ -9,6 +9,9 @@ public class SpawnFish : MonoBehaviour
     [Tooltip("Higher number == more common")]
     public int[] Rarity;
 
+    private GameObject player;
+    private PlayerController playerController;
+
     private int[] spawnNum;
 
     private int randomNum;
@@ -16,6 +19,10 @@ public class SpawnFish : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) { Debug.LogWarning("Player not found"); }
+        playerController = player.GetComponent<PlayerController>();
+
         randomizeAmt = 0;
 
         // make sure all values are inputted
@@ -34,7 +41,7 @@ public class SpawnFish : MonoBehaviour
         }
 
         // randomize
-        randomNum = Random.Range(0, randomizeAmt);
+        randomNum = Random.Range(0, randomizeAmt) + Mathf.RoundToInt(player.transform.position.x / 10);
 
         // check which fish to spawn
         for (int i = 0; i < Fish.Length; i++)
