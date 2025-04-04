@@ -105,9 +105,6 @@ public class PlayerController : MonoBehaviour
             // death animation
             animator.SetBool("IsDead", isDead);
             StartCoroutine(backToMenu());
-            // death sound
-            print("grant");
-            AudioSource.PlayOneShot(deathsound);
             return;
         }
 
@@ -162,6 +159,12 @@ public class PlayerController : MonoBehaviour
 
         // KEEP THIS AT THE BOTTOM
         PlayerPrefs.SetInt("IsDead", isDead ? 1 : 0);
+        if(isDead)
+        {
+            // death sound
+            print("grant");
+            AudioSource.PlayOneShot(deathsound);
+        }
     }
     private void FixedUpdate()
     {
