@@ -10,11 +10,7 @@ public class PlaySoundOnClick : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-<<<<<<< Updated upstream
             audioSource.PlayOneShot(clip);
-=======
-            audioSource.PlayOneShot(clip, 0.5f);
->>>>>>> Stashed changes
         }
     }
 }
