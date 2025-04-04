@@ -64,7 +64,7 @@ public class NetSwing : MonoBehaviour
         {
             cooldownCount = cooldown;
             degreesmoved = AttackDegree;
-            ThisNet = Instantiate(Net, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + (AttackDegree * 0.5f)));
+            ThisNet = Instantiate(Net, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + (AttackDegree * 0.5f) + 90));
             ThisNet.transform.localScale = new Vector2(0, 0);
             currentrotation = transform.eulerAngles.z - (AttackDegree * 0.5f);
             IsAttacking= true;

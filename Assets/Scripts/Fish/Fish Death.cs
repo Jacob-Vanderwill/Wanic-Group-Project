@@ -11,6 +11,7 @@ using UnityEngine;
 
 public class FishDeath : MonoBehaviour
 {
+    public AudioClip FishCollect;
     public GameObject DeadFish;
     GameObject Player;
     GameObject NewDeadFish;
@@ -29,7 +30,8 @@ public class FishDeath : MonoBehaviour
         NewDeadFish.GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
         NewDeadFish.GetComponent<SpriteRenderer>().color = gameObject.GetComponent<SpriteRenderer>().color;
         NewDeadFish.transform.localScale = gameObject.transform.localScale;
-
+        NewDeadFish.name = gameObject.name;
+        NewDeadFish.GetComponent<DieOnTouch>().CollectSound = FishCollect;
         Controller.playerPickUpFish(this.name);
 
         Destroy(gameObject);

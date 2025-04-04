@@ -10,11 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3895373920929697909}
   - component: {fileID: 6094379471334208158}
-  - component: {fileID: 3792418652311111730}
   - component: {fileID: 1901867677886058819}
   - component: {fileID: 3002105547570086473}
   - component: {fileID: 2109168488871145615}
+<<<<<<< Updated upstream
   - component: {fileID: -3644644012388207070}
+=======
+  - component: {fileID: 4044292499197782927}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Net
   m_TagString: Net
@@ -30,13 +33,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5164342618041890757}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.6, y: 8.3, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.86114424, w: 0.5083608}
+  m_LocalPosition: {x: -4.158373, y: 7.5557895, z: 0}
   m_LocalScale: {x: 7.5827, y: 7.5827, z: 7.5827}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 118.891}
 --- !u!212 &6094379471334208158
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -78,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4d989d6a71c643d40a5bbf1cffcac761, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10369a01bb66ee6458fe0dc8ee8cd6a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,51 +92,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3792418652311111730
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164342618041890757}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.004872214, y: 0.14256391}
-  m_SpriteTilingProperty:
-    border: {x: 0.089999996, y: 0, z: 0.099999994, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.29, y: 0.29}
-    newSize: {x: 0.29, y: 0.29}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.10485751, y: 0.25102258}
-  m_EdgeRadius: 0
 --- !u!114 &1901867677886058819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,15 +148,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockback: 5
+<<<<<<< Updated upstream
 --- !u!114 &-3644644012388207070
 MonoBehaviour:
+=======
+--- !u!60 &4044292499197782927
+PolygonCollider2D:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5164342618041890757}
   m_Enabled: 1
+<<<<<<< Updated upstream
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd5ae4b63e31bee4f8308f2a3c1bc4c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.19999999, y: 0.16, z: 0, w: 0.32999998}
+    pivot: {x: 0.31863302, y: 0.4961817}
+    oldSize: {x: 0.7, y: 0.7}
+    newSize: {x: 0.29, y: 0.29}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.33695686, y: 0.032672804}
+      - {x: 0.23695688, y: -0.10732719}
+      - {x: -0.0030431175, y: 0.022672806}
+      - {x: -0.013043117, y: -0.007327194}
+      - {x: 0.2769569, y: -0.18732719}
+      - {x: 0.36695686, y: -0.18732719}
+      - {x: 0.38695684, y: 0.022672806}
+  m_UseDelaunayMesh: 0
+>>>>>>> Stashed changes

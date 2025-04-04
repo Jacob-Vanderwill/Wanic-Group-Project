@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726320441ca954a4597b62a1e5cb7df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FishCollect: {fileID: 8300000, guid: 55404cbd673495a478ebe5dbbb09f04a, type: 3}
   DeadFish: {fileID: 1418381154318932967, guid: 5b5aca537ba3c2b43a8cef40442cf388, type: 3}
 --- !u!58 &3083375664821289177
 CircleCollider2D:
