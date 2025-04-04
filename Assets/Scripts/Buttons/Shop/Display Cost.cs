@@ -11,7 +11,6 @@ public class DisplayCost : MonoBehaviour
     private TextMeshProUGUI TextMeshPro;
 
     private UpgradeOxygenTank UpgradeOxygenTank;
-    private UpgradeSpeed UpgradeSpeed;
 
     private void Start()
     {
@@ -21,8 +20,6 @@ public class DisplayCost : MonoBehaviour
         TextMeshPro = GetComponent<TextMeshProUGUI>();
         if (PlayerPrefsVariableName == "OxygenLevel")
             { UpgradeOxygenTank = GetComponentInParent<UpgradeOxygenTank>(); }
-        if (PlayerPrefsVariableName == "SpeedLevel")
-            { UpgradeSpeed = GetComponentInParent<UpgradeSpeed>(); }
     }
     private void Update()
     {
@@ -37,25 +34,6 @@ public class DisplayCost : MonoBehaviour
                 TextMeshPro.text = "Upgrade cost: MAX";
             }
         }
-        else if (PlayerPrefsVariableName == "SpeedLevel")
-        {
-            if (PlayerPrefs.GetInt(PlayerPrefsVariableName) + 1 <= UpgradeSpeed.costsPerLevel.Length)
-            {
-                TextMeshPro.text = "Upgrade Cost: " + UpgradeSpeed.costsPerLevel[PlayerPrefs.GetInt(PlayerPrefsVariableName)];
-            }
-            else
-            {
-                TextMeshPro.text = "Upgrade cost: MAX";
-            }
-        }
 
-        // debug
-
-        if (Input.GetKey(KeyCode.G))
-        {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
-        }
-
-        //
     }
 }

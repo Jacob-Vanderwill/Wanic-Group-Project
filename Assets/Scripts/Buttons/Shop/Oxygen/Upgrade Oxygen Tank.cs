@@ -8,14 +8,14 @@ public class UpgradeOxygenTank : MonoBehaviour
     public int[] oxygenTankLevels;
     public void upgradeOxygenTank()
     {
-        if (PlayerPrefs.GetInt("Coins") < costsPerLevel[PlayerPrefs.GetInt("OxygenLevel")])
+        int oxygenLevel = PlayerPrefs.GetInt("OxygenLevel");
+
+        if (oxygenLevel + 1 >= oxygenTankLevels.Length)
         {
             return;
         }
 
-        int oxygenLevel = PlayerPrefs.GetInt("OxygenLevel");
-
-        if (oxygenLevel + 1 >= oxygenTankLevels.Length)
+        if (PlayerPrefs.GetInt("Coins") < costsPerLevel[PlayerPrefs.GetInt("OxygenLevel")])
         {
             return;
         }

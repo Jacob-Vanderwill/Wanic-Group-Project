@@ -11,6 +11,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[ExecuteInEditMode]
 public class FishCollectionDisplay : MonoBehaviour
 {
     public string PlayerPrefsName;

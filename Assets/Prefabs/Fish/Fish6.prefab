@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: 5408518920493338914}
   - component: {fileID: 5143027011907783073}
   - component: {fileID: -1592232976543196318}
-  - component: {fileID: 6101404168420090557}
   m_Layer: 3
   m_Name: Fish6
   m_TagString: Fish
@@ -5077,19 +5076,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6101404168420090557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6749482003843794319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a02bc88f706a440a69b7625bcce9f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  onDamage:
-    m_PersistentCalls:
-      m_Calls: []

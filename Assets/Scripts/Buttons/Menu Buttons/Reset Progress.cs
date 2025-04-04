@@ -1,7 +1,7 @@
 /*
  * Jacob Vanderwill
  * Created 3/14/25
- * Last Altered: 3/18/25
+ * Last Altered: 4/3/25
  * Create a script to reset ALL progress when needed
  */
 using System.Collections;
@@ -15,9 +15,9 @@ public class ResetProgress : MonoBehaviour
         // initialize basic data
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins"));
         PlayerPrefs.SetInt("Coins", 0);
+        PlayerPrefs.SetInt("NetDamage", 1);
         PlayerPrefs.SetFloat("OxygenTankSize", 25f);
         PlayerPrefs.SetFloat("OxygenLevelCurrent", 25f);
-        PlayerPrefs.SetFloat("Speed", 10);
         PlayerPrefs.SetInt("IsDead", 0);
 
         // highscore (depth)
@@ -69,7 +69,9 @@ public class ResetProgress : MonoBehaviour
 
         // intinialize level
         PlayerPrefs.SetInt("OxygenLevel", 0);
-        PlayerPrefs.SetInt("SpeedLevel", 0);
-        PlayerPrefs.SetInt("AttackLevel", 0);
+        PlayerPrefs.SetInt("NetLevel", 0);
+
+        // Show its active
+        PlayerPrefs.SetInt("Active", 1);
     }
 }

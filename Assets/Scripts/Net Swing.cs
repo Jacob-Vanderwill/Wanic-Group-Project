@@ -2,9 +2,11 @@
  * Hudson Ream
  * 3/11/2025
  * allows the player to attack with the net
+ * 
+ * Edited by Jacob Vanderwill
+ * 4/3/25
+ * Changed cooldown and speed to be controlled by level system
  */
-
-
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -15,9 +17,9 @@ public class NetSwing : MonoBehaviour
 {
     public UnityEvent OnSwing = new UnityEvent();
     public GameObject Net;
-    public float cooldown;
+    private float cooldown;
     public float AttackDegree;
-    public float AttackSpeed;
+    private float AttackSpeed;
     public float AttackArea;
     public GameObject DeadFish;
     float degreesmoved;
@@ -31,6 +33,23 @@ public class NetSwing : MonoBehaviour
     {
         ThisNet = null;  
         PlayerController = GetComponent<PlayerController>();
+
+        if (PlayerPrefs.GetInt("NetLevel") + 1 == 3)
+        {
+            cooldown = 0.2f;
+            AttackSpeed = 15f;
+        }
+        else if (PlayerPrefs.GetInt("NetLevel") + 1 >= 2)
+        {
+            cooldown = 0.3f;
+            AttackSpeed = 10f;
+        }
+        else if (PlayerPrefs.GetInt("NetLevel") + 1 == 1)
+        {
+            cooldown = 0.5f;
+            AttackSpeed = 8f;
+        }
+        else { Debug.LogError("Net level was not handled properly"); }
     }
 
     // Update is called once per frame

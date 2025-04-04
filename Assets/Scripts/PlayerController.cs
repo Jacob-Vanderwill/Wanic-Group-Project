@@ -1,7 +1,7 @@
 /*
  * Jacob Vanderwill
  * Created: 3/10/2025
- * Last Altered: 3/11/2025
+ * Last Altered: 4/3/2025
  * Create a script to manage all player inputs
  */
 using JetBrains.Annotations;
@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
     [Header("Death Panel")]
     public Image DeathPanel;
     public TextMeshProUGUI text;
-    public TextMeshProUGUI textButton;
     public Image button;
     [Space]
     [Header("Shield")]
@@ -47,12 +46,11 @@ public class PlayerController : MonoBehaviour
 
     private float oxygenTankSize;
 
-    private bool isSprinting;
     [HideInInspector]
     public bool isDead;
     private bool isSlow;
 
-    private AudioSource audioSource;
+    // private AudioSource audioSource;
     private Rigidbody2D myRB;
     private Health health;
     private Animator animator;
@@ -79,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
         if (!UseCustomSpeed)
         {
-            Speed = PlayerPrefs.GetFloat("Speed");
+            Speed = 15;
             SpeedSprint = 10;
         }
         else
@@ -134,6 +132,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift) && inputMovement != Vector3.zero)
             {
+                // audioSource.PlayOneShot(DashAudio, 1);
                 StartCoroutine(dash());
                 dashCooldownTimer = DashCooldown;
             }
@@ -202,8 +201,6 @@ public class PlayerController : MonoBehaviour
         myRB.velocity = inputMovement.normalized * 35;
         myRB.drag = myRB.drag * 9f;
 
-        audioSource.PlayOneShot(DashAudio);
-
         yield return new WaitForSeconds(0.2f);
 
         myRB.drag = startDrag;
@@ -211,19 +208,48 @@ public class PlayerController : MonoBehaviour
     // start menu screen when dead
     IEnumerator backToMenu()
     {
+        float duration = 2.5f;
+        float elapsedTime = 0f;
+
         DeathPanel.gameObject.SetActive(true);
-        yield return null;
+        Color panelColor = DeathPanel.color;
+
+        while (elapsedTime < duration)
+        {
+            // Convert 180 to 0-1 range
+            float alpha = Mathf.Lerp(0f, 200f / 255f, elapsedTime / duration);
+            // fade the things in
+            DeathPanel.color = new Color(panelColor.r, panelColor.g, panelColor.b, alpha);
+            button.color = new Color(button.color.r, button.color.g, button.color.b, alpha);
+            text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         string tag = collision.collider.tag;
 
-        // if collided with camera border then dead/if collided with fish add value
+        // if collided with camera border then dead etc
         switch (tag)
         {
             case "MainCamera":
                 { health.health = 0; break; }
             case "Enemy":
+                {
+                    Vector3 direction = transform.position - collision.transform.position;
+                    float directionSpeed;
+
+                    // you have to reverse the x axis for some reason
+                    Vector3 temp = new Vector3(-myRB.velocity.x, myRB.velocity.y, 0);
+                    Vector3 rotatedVelocity = Quaternion.LookRotation(direction) * temp;
+                    directionSpeed = rotatedVelocity.z;
+
+                    if (directionSpeed > 1)
+                        { health.health = 0; }
+                    break;
+                }
+            case "Fish":
                 { health.health = 0; break; }
             case "Shield":
                 { health.isShieldActive = true; break; }
