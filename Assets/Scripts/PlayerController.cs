@@ -13,6 +13,7 @@ using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D myRB;
     private Health health;
     private Animator animator;
+    private SpriteRenderer mySR;
 
     //Audio variables
     public AudioSource AudioSource;
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
         myRB = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
         animator = GetComponent<Animator>();
+        mySR = GetComponent<SpriteRenderer>();
 
         if (UseCustomOxygenLevels)
         {
@@ -147,9 +150,14 @@ public class PlayerController : MonoBehaviour
         }
         //
 
-        // look at mouse
-        Vector2 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2(mousepos.y - transform.position.y, mousepos.x - transform.position.x) * Mathf.Rad2Deg - 90), 0.03f);// update IsDead
+        // look at xVelocity
+        if(inputMovement.x != 0)
+        {
+            mySR.flipX = inputMovement.x < 0;
+        }
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Sqrt(Mathf.Abs(myRB.velocity.x)) * -8 * Mathf.Sign(myRB.velocity.x));
+        //Vector2 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2(mousepos.y - transform.position.y, mousepos.x - transform.position.x) * Mathf.Rad2Deg - 90), 0.03f);// update IsDead
         
         // Take oxygen away and check is oxygen is gone
         PlayerPrefs.SetFloat("OxygenLevelCurrent", PlayerPrefs.GetFloat("OxygenLevelCurrent") - Time.deltaTime);
@@ -163,7 +171,6 @@ public class PlayerController : MonoBehaviour
         if(isDead)
         {
             // death sound
-            print("grant");
             AudioSource.PlayOneShot(deathsound);
         }
     }

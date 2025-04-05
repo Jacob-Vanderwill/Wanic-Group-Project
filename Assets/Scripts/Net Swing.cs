@@ -7,11 +7,7 @@
  * 4/3/25
  * Changed cooldown and speed to be controlled by level system
  */
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class NetSwing : MonoBehaviour
 {
@@ -62,9 +58,11 @@ public class NetSwing : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse0) && cooldownCount <= 0)
         {
+            Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            float mouseangle = Mathf.Atan2(mousepos.y, mousepos.x) * Mathf.Rad2Deg;
             cooldownCount = cooldown;
             degreesmoved = AttackDegree;
-            ThisNet = Instantiate(Net, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + (AttackDegree * 0.5f) + 90));
+            ThisNet = Instantiate(Net, transform.position, Quaternion.Euler(0, 0, mouseangle + AttackDegree * 0.5f));
             ThisNet.transform.localScale = new Vector2(0, 0);
             currentrotation = transform.eulerAngles.z - (AttackDegree * 0.5f);
             IsAttacking= true;
