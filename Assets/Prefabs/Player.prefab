@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2880330053406688288}
   - component: {fileID: 5025322018439556052}
   - component: {fileID: 1147582644986675472}
+  - component: {fileID: 5582622350152203584}
   - component: {fileID: 47884256541547339}
   - component: {fileID: 2812402169102901041}
   - component: {fileID: -439184493751037056}
@@ -343,6 +344,19 @@ MonoBehaviour:
   Tiles:
   - {fileID: 2833245424121549448, guid: c230939a958bdb84f8c055453969a9e1, type: 3}
   - {fileID: 2833245424121549448, guid: d5de114d7cb2ec4419a9f295035265b8, type: 3}
+--- !u!114 &5582622350152203584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584956200357010522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a2d7c35411fad498e6a010e620feff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  background: {fileID: 2966057034370203704, guid: a643dbccdc084084393b7efb3c8473b1, type: 3}
 --- !u!114 &47884256541547339
 MonoBehaviour:
   m_ObjectHideFlags: 0
