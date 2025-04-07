@@ -682,6 +682,7 @@ GameObject:
   - component: {fileID: 465771693}
   - component: {fileID: 465771692}
   - component: {fileID: 465771691}
+  - component: {fileID: 465771694}
   m_Layer: 0
   m_Name: Resume
   m_TagString: Untagged
@@ -764,6 +765,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013027475}
+        m_TargetAssemblyTypeName: PlaySoundOnClick, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &465771692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +815,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465771689}
   m_CullTransparentMesh: 1
+--- !u!114 &465771694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465771689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2013027475}
+          m_TargetAssemblyTypeName: PlaySoundOnClick, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &507757162
 GameObject:
   m_ObjectHideFlags: 0
@@ -2231,6 +2273,7 @@ GameObject:
   - component: {fileID: 1241875704}
   - component: {fileID: 1241875703}
   - component: {fileID: 1241875702}
+  - component: {fileID: 1241875705}
   m_Layer: 0
   m_Name: Options
   m_TagString: Untagged
@@ -2300,7 +2343,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1241875703}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2013027475}
+        m_TargetAssemblyTypeName: PlaySoundOnClick, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1241875703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2339,6 +2394,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241875700}
   m_CullTransparentMesh: 1
+--- !u!114 &1241875705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241875700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2013027475}
+          m_TargetAssemblyTypeName: PlaySoundOnClick, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1320630492
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,8 +3623,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -11.210556, y: -5.686528}
-  - {x: -11.210556, y: 5.1665287}
+  - {x: -12.190975, y: -5.686528}
+  - {x: -12.190975, y: 5.1665287}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -3741,6 +3825,7 @@ GameObject:
   - component: {fileID: 1682208181}
   - component: {fileID: 1682208180}
   - component: {fileID: 1682208179}
+  - component: {fileID: 1682208182}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -3823,6 +3908,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013027475}
+        m_TargetAssemblyTypeName: PlaySoundOnClick, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1682208180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3861,6 +3958,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682208177}
   m_CullTransparentMesh: 1
+--- !u!114 &1682208182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682208177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2013027475}
+          m_TargetAssemblyTypeName: PlaySoundOnClick, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1754371489
 GameObject:
   m_ObjectHideFlags: 0
@@ -3873,6 +3999,7 @@ GameObject:
   - component: {fileID: 1754371493}
   - component: {fileID: 1754371492}
   - component: {fileID: 1754371491}
+  - component: {fileID: 1754371494}
   m_Layer: 0
   m_Name: Pause
   m_TagString: Untagged
@@ -3956,6 +4083,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2013027475}
+        m_TargetAssemblyTypeName: PlaySoundOnClick, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1754371492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3994,6 +4133,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754371489}
   m_CullTransparentMesh: 1
+--- !u!114 &1754371494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754371489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2013027475}
+          m_TargetAssemblyTypeName: PlaySoundOnClick, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1785133508
 GameObject:
   m_ObjectHideFlags: 0
@@ -4081,6 +4249,26 @@ SpriteRenderer:
 --- !u!1 &2013027474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 584956200357010522, guid: 42c1f990342eab3438b2ba98a9613e2f, type: 3}
+  m_PrefabInstance: {fileID: 4118400959821046653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2013027475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013027474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 972504d0801287545b9f1ca037f31711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 2013027477}
+  clicksound: {fileID: 8300000, guid: 2bd76dd5af5cea64ebc261de881a1951, type: 3}
+  hovermousesound: {fileID: 8300000, guid: 64d5ece2c4281c84298485e1d26b8a85, type: 3}
+--- !u!82 &2013027477 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7444787489228045251, guid: 42c1f990342eab3438b2ba98a9613e2f, type: 3}
   m_PrefabInstance: {fileID: 4118400959821046653}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2052253389
@@ -4277,7 +4465,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.896355
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4377,7 +4565,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 584956200357010522, guid: 42c1f990342eab3438b2ba98a9613e2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2013027475}
   m_SourcePrefab: {fileID: 100100000, guid: 42c1f990342eab3438b2ba98a9613e2f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlaySoundOnClick : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip clip;
+    public AudioClip clicksound;
+    public AudioClip hovermousesound;
     private void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            audioSource.PlayOneShot(clip);
-        }
+
+    }
+    public void OnPointerEnter()
+    {
+        audioSource.PlayOneShot(hovermousesound);
+    }
+    public void OnClick()
+    {
+        audioSource.PlayOneShot(clicksound);
     }
 }
