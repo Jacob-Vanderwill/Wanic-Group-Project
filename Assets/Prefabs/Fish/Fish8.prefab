@@ -260,11 +260,7 @@ Animator:
   m_GameObject: {fileID: 6749482003843794319}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-<<<<<<< Updated upstream
   m_Controller: {fileID: 9100000, guid: d0f5e7fdbfd132946942eabf87db0717, type: 2}
-=======
-  m_Controller: {fileID: 9100000, guid: 8f69601edd5019a428aed975d2ab1ef7, type: 2}
->>>>>>> Stashed changes
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
