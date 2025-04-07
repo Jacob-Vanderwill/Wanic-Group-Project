@@ -15,17 +15,20 @@ public class DieOnTouch : MonoBehaviour
     public AudioClip CollectSound;
     public AudioSource source;
     public string TagToDieTo;
+    ParticleSystem thisPS;
     SpriteRenderer thisSR;
     private void Start()
     {
         source.PlayOneShot(CollectSound, 1);
         thisSR = GetComponent<SpriteRenderer>();    
+        thisPS = GetComponent<ParticleSystem>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag(TagToDieTo))
         {
             thisSR.sprite = null;
+            thisPS.Stop();
             Destroy(gameObject, 5);
         }
     }
@@ -34,6 +37,7 @@ public class DieOnTouch : MonoBehaviour
         if (collision.collider.CompareTag(TagToDieTo))
         {
             thisSR.sprite = null;
+            thisPS.Stop();
             Destroy(gameObject, 5);
         }
     }

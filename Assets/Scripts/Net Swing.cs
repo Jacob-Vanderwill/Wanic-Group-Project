@@ -34,12 +34,12 @@ public class NetSwing : MonoBehaviour
         if (PlayerPrefs.GetInt("NetLevel") + 1 == 3)
         {
             cooldown = 0.2f;
-            AttackSpeed = 15f;
+            AttackSpeed = 4f;
         }
         else if (PlayerPrefs.GetInt("NetLevel") + 1 >= 2)
         {
             cooldown = 0.3f;
-            AttackSpeed = 10f;
+            AttackSpeed = 5f;
         }
         else if (PlayerPrefs.GetInt("NetLevel") + 1 == 1)
         {
