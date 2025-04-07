@@ -1650,7 +1650,7 @@ Transform:
   m_GameObject: {fileID: 785705574}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.13, y: -0.63, z: 0.02615354}
+  m_LocalPosition: {x: -18.98, y: -0.31, z: 0.02615354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3504,7 +3504,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.2276753, g: 0.39007828, b: 0.645283, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4465,7 +4465,11 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
+<<<<<<< Updated upstream
   m_FillAmount: 1
+=======
+  m_FillAmount: 0.6477382
+>>>>>>> Stashed changes
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

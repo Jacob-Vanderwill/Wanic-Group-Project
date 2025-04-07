@@ -212,6 +212,7 @@ MonoBehaviour:
   isDead: 0
   AudioSource: {fileID: 5025322018439556052}
   deathsound: {fileID: 8300000, guid: e7fa52f4ed0feda45b9454c5766bc519, type: 3}
+  netSwing: {fileID: 8300000, guid: b3a455c728572744184ad9e84cb9312b, type: 3}
 --- !u!95 &2880330053406688288
 Animator:
   serializedVersion: 5

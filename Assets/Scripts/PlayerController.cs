@@ -57,10 +57,12 @@ public class PlayerController : MonoBehaviour
     private Health health;
     private Animator animator;
     private SpriteRenderer mySR;
-
+    [Space]
+    [Header("Audio")]
     //Audio variables
     public AudioSource AudioSource;
     public AudioClip deathsound;
+    public AudioClip netSwing;
 
 
     // Start is called before the first frame update
@@ -110,6 +112,11 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsDead", isDead);
             StartCoroutine(backToMenu());
             return;
+        }
+        // play net audio
+        if (Input.GetMouseButtonDown(0))
+        {
+            AudioSource.PlayOneShot(netSwing);
         }
 
         // animator things
