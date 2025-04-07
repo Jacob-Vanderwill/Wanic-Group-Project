@@ -221,7 +221,7 @@ MonoBehaviour:
   WanderingRadius: 5
   PlayerDetectionRadius: 5
   IdleSpeed: 1
-  ChaseSpeed: 1
+  ChaseSpeed: 4
   LookRotationOffest: 0
 --- !u!114 &-7050839819510213875
 MonoBehaviour:
@@ -246,7 +246,7 @@ Animator:
   m_GameObject: {fileID: 6749482003843794319}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7525f1fd3ca38ab478a73f6911ee0d3e, type: 2}
+  m_Controller: {fileID: 9100000, guid: babe54531e140524ebea8565ec3e5889, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

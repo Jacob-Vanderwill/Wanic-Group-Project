@@ -178,7 +178,7 @@ public class PlayerController : MonoBehaviour
         if(isDead)
         {
             // death sound
-            AudioSource.PlayOneShot(deathsound);
+            AudioSource.PlayOneShot(deathsound, 1.6f);
         }
     }
     private void FixedUpdate()

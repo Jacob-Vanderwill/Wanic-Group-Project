@@ -14,12 +14,13 @@ public class MusicPlayer : MonoBehaviour
     public AudioClip BaseMusicTrack;
     public AudioClip FirstDepthAddon;
     public AudioClip SecondDepthAddon;
+    public float volume;
     // Start is called before the first frame update
     void Start()
     {
         
         musicPlayer = GetComponents<AudioSource>();
-        musicPlayer[0].volume = 0.5f;
+        musicPlayer[0].volume = volume;
         musicPlayer[1].volume = 0;
         musicPlayer[2].volume = 0;
         musicPlayer[0].clip = BaseMusicTrack;
@@ -33,13 +34,21 @@ public class MusicPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x >= 300 && musicPlayer[1].volume <= 0.5f)
+        if(transform.position.x >= 300 && musicPlayer[1].volume < volume)
         {  
             musicPlayer[1].volume += Time.deltaTime;
         }
-        if(transform.position.x >= 600 && musicPlayer[2].volume <= 0.5f)
+        else
+        {
+            musicPlayer[1].volume = volume;
+        }
+        if(transform.position.x >= 600 && musicPlayer[2].volume < volume)
         {
             musicPlayer[2].volume += Time.deltaTime/3;
+        }
+        else
+        {
+            musicPlayer[2].volume = volume;
         }
     }
 }
