@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 545ee750a0c063b4bbe98bdc5bdc818b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Fish6
+  Name: Fish7
 --- !u!114 &1528908501101087687
 MonoBehaviour:
   m_ObjectHideFlags: 0
