@@ -28,10 +28,10 @@ public class PlayerController : MonoBehaviour
     [Header("Oxygen")]
     public bool UseCustomOxygenLevels;
     public float CustomMaxOxygenLevel;
-    [Space]
-    [Header("Death Panel")]
+    [Space] [Header("Death Panel")] private bool hasdied = false;
     public Image DeathPanel;
-    public TextMeshProUGUI text;
+    public GameObject DeathMessage;
+    private Image text;
     public Image button;
     [Space]
     [Header("Shield")]
@@ -98,6 +98,8 @@ public class PlayerController : MonoBehaviour
 
         startDrag = myRB.drag;
         startSpeed = Speed;
+        
+        text = DeathMessage.GetComponent<Image>();
 
         DeathPanel.gameObject.SetActive(false);
     }
@@ -109,8 +111,12 @@ public class PlayerController : MonoBehaviour
         if (isDead)
         {
             // death animation
-            animator.SetBool("IsDead", isDead);
-            StartCoroutine(backToMenu());
+            if (!hasdied)
+            {
+                animator.SetBool("IsDead", isDead);
+                StartCoroutine(backToMenu());
+                hasdied = true;
+            }
             return;
         }
         // play net audio
@@ -250,19 +256,20 @@ public class PlayerController : MonoBehaviour
     {
         float duration = 2.5f;
         float elapsedTime = 0f;
+        print("face");
 
         DeathPanel.gameObject.SetActive(true);
         Color panelColor = DeathPanel.color;
 
         while (elapsedTime < duration)
         {
+            elapsedTime += Time.deltaTime;
             // Convert 180 to 0-1 range
-            float alpha = Mathf.Lerp(0f, 200f / 255f, elapsedTime / duration);
+            float alpha = Mathf.Lerp(0f, 255/255f, elapsedTime / duration);
             // fade the things in
             DeathPanel.color = new Color(panelColor.r, panelColor.g, panelColor.b, alpha);
             button.color = new Color(button.color.r, button.color.g, button.color.b, alpha);
             text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
-            elapsedTime += Time.deltaTime;
             yield return null;
         }
     }
